@@ -8,10 +8,20 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularFireModule } from 'angularfire2';
+import { MainComponent } from './+main/main.component';
+import { ResultsComponent } from './+results/results.component';
+import { DetailsComponent } from './+details/details.component';
+import { ProfileComponent } from './+profile/profile.component';
+import { BookmarkComponent } from './+bookmark/bookmark.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainComponent,
+    ResultsComponent,
+    DetailsComponent,
+    ProfileComponent,
+    BookmarkComponent
   ],
   imports: [
     BrowserModule,
