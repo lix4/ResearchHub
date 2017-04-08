@@ -1,3 +1,4 @@
+import { RouterModule } from "@angular/router";
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -13,6 +14,7 @@ import { ResultsComponent } from './+results/results.component';
 import { DetailsComponent } from './+details/details.component';
 import { ProfileComponent } from './+profile/profile.component';
 import { BookmarkComponent } from './+bookmark/bookmark.component';
+import { AppRoutingModule } from "./app-routing.module";
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { BookmarkComponent } from './+bookmark/bookmark.component';
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
+    RouterModule,
+    AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
