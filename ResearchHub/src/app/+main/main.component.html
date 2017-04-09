@@ -1,23 +1,26 @@
 <h1>ResearchHub</h1>
-<md-input-container>
-  <input mdInput placeholder="Search Terms" value="I am interested in ...">
-</md-input-container>
-<button md-raised-button (click)="search()">Search</button>
+<div fxLayout="column" fxLayoutAlign="space-around center">
+  <md-input-container fxFill>
+    <input mdInput placeholder="Search Terms">
+  </md-input-container>
+  <button md-raised-button (click)="search()">Search</button>
+</div>
+
 <hr>
-<md-grid-list cols="4" rowHeight="2:1">
-  <md-grid-tile>
-    <md-card>1</md-card>
-  </md-grid-tile>
-  <md-grid-tile>
-    <md-card>2</md-card>
-  </md-grid-tile>
-  <md-grid-tile>
-    <md-card>3</md-card>
-  </md-grid-tile>
-  <md-grid-tile>
-    <md-card>4</md-card>
-  </md-grid-tile>
-  <md-grid-tile>
-    <md-card>5</md-card>
+<h2>Sources</h2>
+<md-grid-list cols="4" rowHeight="3:2">
+  <md-grid-tile *ngFor="let source of sources">
+    <md-card>
+      <md-card-title fxLayoutAlign="none center">
+        <span>{{source.title}}</span>
+        <span fxFlex></span>
+      </md-card-title>
+      <md-card-content>
+        <div fxLayoutAlign="none center">
+          <span>{{source.quantity}} Sources</span>
+          <span fxFlex></span>
+        </div>
+      </md-card-content>
+    </md-card>
   </md-grid-tile>
 </md-grid-list>

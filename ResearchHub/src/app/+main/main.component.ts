@@ -6,14 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+  sources = [
+    {title: "Test", quantity:12 },
+    {title: "Forests", quantity:90 },
+    {title: "Test", quantity:12 },
+    {title: "Test", quantity:12 },
+    {title: "Test", quantity:12 },
+  ]
 
-  constructor() { }
+constructor() { }
 
-  ngOnInit() {
-  }
+ngOnInit() {
+}
 
-  search(): void {
-    console.log("here!!");
-  }
+search(): void {
+  console.log("here!!");
+}
 
 }
