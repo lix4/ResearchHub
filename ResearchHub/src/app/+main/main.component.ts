@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-main',
@@ -7,20 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
   sources = [
-    {title: "Test", quantity:12 },
-    {title: "Forests", quantity:90 },
-    {title: "Test", quantity:12 },
-    {title: "Test", quantity:12 },
-    {title: "Test", quantity:12 },
+    { title: "Test", quantity: 12 },
+    { title: "Forests", quantity: 90 },
+    { title: "Test", quantity: 12 },
+    { title: "Test", quantity: 12 },
+    { title: "Test", quantity: 12 },
   ]
 
-constructor() { }
+  constructor(private router: Router) { }
 
-ngOnInit() {
-}
+  ngOnInit() {
+  }
 
-search(): void {
-  console.log("here!!");
-}
+  search(): void {
+    //TODO: implement this function.
+    this.router.navigate(['/results']);
+  }
 
 }

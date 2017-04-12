@@ -15,6 +15,8 @@ import { DetailsComponent } from './+details/details.component';
 import { ProfileComponent } from './+profile/profile.component';
 import { BookmarkComponent } from './+bookmark/bookmark.component';
 import { AppRoutingModule } from "./app-routing.module";
+import { LoginComponent } from './+login/login.component';
+import { SignupComponent } from './+signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { AppRoutingModule } from "./app-routing.module";
     ResultsComponent,
     DetailsComponent,
     ProfileComponent,
-    BookmarkComponent
+    BookmarkComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

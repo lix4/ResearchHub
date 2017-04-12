@@ -1,10 +1,10 @@
 <md-toolbar color="primary">
-  <span>ResearchHub</span>
+  <span [routerLink]="['']">ResearchHub</span>
   <span fxFlex></span>
-  <button md-button>Login</button>
-  <md-menu [overlapTrigger]="false" #signoutMenu="mdMenu">
+  <button [routerLink]="['/login']" md-button>Login</button>
+  <!--<md-menu [overlapTrigger]="false" #signoutMenu="mdMenu">
     <button md-menu-item (click)='signOut()'>Sign Out</button>
-  </md-menu>
+  </md-menu>-->
 </md-toolbar>
 <div fxLayoutAlign="center center">
   <div class="container" fxFlex fxFlex.md="960px" fxFlex.gt-md="1100px">
