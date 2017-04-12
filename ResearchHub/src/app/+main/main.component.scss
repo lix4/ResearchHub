@@ -1,0 +1,49 @@
+$hortz-card-padding: 20px;
+md-card {
+  width: 90%;
+  height: 90%;
+  padding: 0px;
+  font-family: "monaco";
+  md-card-title {
+    padding: 10px $hortz-card-padding;
+    font-weight: normal;
+    width: 100%;
+    font-size: 24px;
+    color: white;
+    background-color: #F57C00;
+  }
+  md-card-content {
+    padding: 10px $hortz-card-padding 0;
+    font-size: 16px;
+    color: black;
+  }
+}
+
+md-grid-list {
+  margin-top: 40px;
+  margin-bottom: 200px;
+}
+
+h1 {
+  margin-top: 120px;
+  margin-bottom: 20px;
+  color: #E65100;
+  font-family: "monaco";
+  font-size: 90px;
+  text-align: center;
+}
+
+h2 {
+  margin-top: 60px;
+  margin-bottom: 20px;
+  font-family: "monaco";
+  color: #F57C00;
+}
+
+
+
+button {
+  background: #F57C00;
+  color: white;
+  margin-bottom: 70px;
+}
