@@ -1,12 +1,38 @@
 md-card {
   margin-top: 15%;
-  height: 20em;
+  height: 25em;
   margin-bottom: 10%;
   width: 30em;
   margin-left: 25%;
   margin-right: 25%;
-}
-
-md-card-title {
-  background-color: #F57C00;
+  padding: 0;
+  md-card-title {
+    background-color: #F57C00;
+    color: white;
+    height: 13%;
+    font-size: 2em;
+  }
+  md-checkbox,
+  md-input-container {
+    display: flex;
+    margin-bottom: 3%;
+  }
+  span {
+    margin-left: 5%;
+  }
+  md-input-container {
+    width: 80%;
+    margin-left: 10%;
+  }
+  md-checkbox {
+    margin-left: 10%;
+  }
+  button {
+    background-color: #4082ed;
+    float: right;
+    margin-right: 10%;
+  }
+  a {
+    margin-left: 5%;
+  }
 }
