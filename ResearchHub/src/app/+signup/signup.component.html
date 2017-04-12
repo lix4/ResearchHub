@@ -4,16 +4,16 @@
   </md-card-title>
   <span>Email</span>
   <md-input-container>
-    <input mdInput>
+    <input [(ngModel)]="formUser.username" mdInput>
   </md-input-container>
   <span>Password</span>
   <md-input-container>
-    <input mdInput>
+    <input [(ngModel)]="formUser.password" mdInput>
   </md-input-container>
   <span>Confirm Password</span>
   <md-input-container>
     <input mdInput>
   </md-input-container>
   <a href="/login">go back</a>
-  <button md-button>Sign Up</button>
+  <button md-button (click)="register()">Sign Up</button>
 </md-card>

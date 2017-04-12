@@ -1,3 +1,4 @@
+import { AuthService } from './service/auth.service';
 import { RouterModule } from "@angular/router";
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
@@ -40,7 +41,7 @@ import { SignupComponent } from './+signup/signup.component';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
