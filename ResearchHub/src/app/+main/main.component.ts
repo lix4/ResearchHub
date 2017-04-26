@@ -25,4 +25,8 @@ export class MainComponent implements OnInit {
     this.router.navigate(['/results']);
   }
 
+  newSource(): void {
+    this.router.navigate(['/newSource'])
+  }
+
 }
