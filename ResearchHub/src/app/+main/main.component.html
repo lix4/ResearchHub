@@ -7,7 +7,8 @@
 </div>
 
 <hr>
-<h2>Sources</h2>
+
+<h2>Sources <button md-button style="float: right;" (click)="newSource()"><md-icon>add</md-icon> New Source</button></h2>
 <md-grid-list cols="4" rowHeight="3:2">
   <md-grid-tile *ngFor="let source of sources">
     <md-card>

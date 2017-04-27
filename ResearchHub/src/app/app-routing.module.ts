@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BookmarkComponent } from "./+bookmark/bookmark.component";
 import { DetailsComponent } from "./+details/details.component";
+import { NewSourceComponent } from './+new-source/new-source.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
     path: 'signup',
     component: SignupComponent
     // canActivate: [AuthGuardService]
+  },
+  {
+    path: 'newSource',
+    component: NewSourceComponent
   },
   {
     path: '**',
