@@ -18,6 +18,7 @@ import { BookmarkComponent } from './+bookmark/bookmark.component';
 import { AppRoutingModule } from "./app-routing.module";
 import { LoginComponent } from './+login/login.component';
 import { SignupComponent } from './+signup/signup.component';
+import { NewSourceComponent } from './+new-source/new-source.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SignupComponent } from './+signup/signup.component';
     ProfileComponent,
     BookmarkComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    NewSourceComponent
   ],
   imports: [
     BrowserModule,
