@@ -15,6 +15,7 @@ interface User {
 export class LoginComponent implements OnInit {
 
 
+
   formUser: User = {
     'username': '',
     'password': ''
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+
   login(): void {
     this.authService.login(this.formUser.username, this.formUser.password);
   }
@@ -32,5 +34,6 @@ export class LoginComponent implements OnInit {
   toSignup(): void {
     this.router.navigate(["/signup"])
   }
+
 
 }
