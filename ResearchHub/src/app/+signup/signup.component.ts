@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 import { AuthService } from './../service/auth.service';
-=======
 import { Router } from '@angular/router';
->>>>>>> 49337a2358164e7c93c517af99619fc5ac44da56
 import { Component, OnInit } from '@angular/core';
 
 interface User {
@@ -21,11 +18,10 @@ export class SignupComponent implements OnInit {
     'password': ''
   };
 
-<<<<<<< HEAD
-  constructor(private authService: AuthService) { }
-=======
-  constructor(private router: Router) { }
->>>>>>> 49337a2358164e7c93c517af99619fc5ac44da56
+
+  constructor(private authService: AuthService, private router: Router) { }
+
+
 
   ngOnInit() {
 
