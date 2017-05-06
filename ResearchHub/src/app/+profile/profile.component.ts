@@ -50,13 +50,13 @@ export class ProfileComponent implements OnInit {
   }
 
   editName(): void {
-    this.tempName = this.user.name
+    this.tempName = this.user.name || ""
     this.editingName = true
   }
 
   onSubmit(): void {
     this.user.name = this.tempName
-    this.af.database.object("users/" + this.userid).set(this.user)
+    this.af.database.object("users/" + this.userid + "/name").set(this.tempName)
     this.editingName = false
   }
 

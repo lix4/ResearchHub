@@ -2,7 +2,8 @@ img {
     padding-top: 50px;
     display: block;
     margin: auto;
-    width: 40%;
+    width: auto;
+    max-height: 400px;
 }
 
 md-card {

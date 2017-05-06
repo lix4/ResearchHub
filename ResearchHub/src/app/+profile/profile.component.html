@@ -1,5 +1,5 @@
 <div *ngIf="user">
-    <img [src]="user.photoUrl" alt="Profile Picture" *ngIf="user.photoUrl"(click)="editPicture()">>
+    <img [src]="user.photoUrl" alt="Profile Picture" *ngIf="user.photoUrl"(click)="editPicture()">
     <img src="./assets/placeholder.png" alt="Profile Picture" *ngIf="!user.photoUrl" (click)="editPicture()">
     <md-card>
         <md-card-content fxLayoutAlign="space-between center" *ngIf="!editingName;else nameEditTemplate">
