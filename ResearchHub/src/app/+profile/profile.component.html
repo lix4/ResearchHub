@@ -1,3 +1,6 @@
-<img src="https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg" alt="">
-<md-card>phillee</md-card>
-<md-card>lix4@rose-hulamn.edu</md-card>
+<div *ngIf="user">
+    <img [src]="user.photoUrl" alt="Profile Picture" *ngIf="user.photoUrl">
+    <img src="./assets/placeholder.png" alt="Profile Picture" *ngIf="!user.photoUrl">
+    <md-card *ngIf="user">{{user.name}}</md-card>
+    <md-card>{{userEmail}}</md-card>
+</div>

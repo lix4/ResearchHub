@@ -6,6 +6,7 @@ import { Observable } from "rxjs/Observable";
 export class AuthService {
   public _isSignedIn = false;
   public _currentUserId: string;
+  public _currentUserEmail: string;
 
   constructor(private afAuth: AngularFireAuth, private router: Router) {
     this.afAuth.subscribe((authState: FirebaseAuthState) => {
@@ -13,6 +14,7 @@ export class AuthService {
         console.log("You are signed in. All is good!");
         console.log(authState.auth.email);
         this._isSignedIn = true;
+        this._currentUserEmail = authState.auth.email
         this._currentUserId = authState.uid;
       } else {
         console.log("You are not signed in!");
