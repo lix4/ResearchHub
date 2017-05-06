@@ -1,0 +1,37 @@
+.title {
+    text-align: center;
+    font-size: 20pt;
+    font-weight: bold;
+}
+.uploadButton {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.uploadButton + label {
+    background-color: #4d81d6;
+    color: white;
+    margin: 0px 20px;
+    padding: 10px 10px;
+    font-family: sans-serif;
+}
+
+.uploadButton + label {
+	cursor: pointer; /* "hand" cursor */
+}
+
+.actionButton {
+    
+}
+
+#spinner {
+    display: none;
+    height: 20px;
+}
+
+#uploadBar {
+    display: inline
+}

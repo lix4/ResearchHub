@@ -1,5 +1,3 @@
-import { SignupComponent } from './+signup/signup.component';
-import { LoginComponent } from './+login/login.component';
 import { ResultsComponent } from './+results/results.component';
 import { ProfileComponent } from './+profile/profile.component';
 import { MainComponent } from './+main/main.component';
@@ -32,16 +30,6 @@ const routes: Routes = [
   {
     path: 'results',
     component: ResultsComponent
-    // canActivate: [AuthGuardService]
-  },
-  {
-    path: 'login',
-    component: LoginComponent
-    // canActivate: [AuthGuardService]
-  },
-  {
-    path: 'signup',
-    component: SignupComponent
     // canActivate: [AuthGuardService]
   },
   {

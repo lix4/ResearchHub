@@ -16,8 +16,8 @@ import { DetailsComponent } from './+details/details.component';
 import { ProfileComponent } from './+profile/profile.component';
 import { BookmarkComponent } from './+bookmark/bookmark.component';
 import { AppRoutingModule } from "./app-routing.module";
-import { LoginComponent } from './+login/login.component';
-import { SignupComponent } from './+signup/signup.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 import { NewSourceComponent } from './+new-source/new-source.component';
 import { AddPhotoComponent } from "./add-photo/add-photo.component";
 
@@ -46,7 +46,9 @@ import { AddPhotoComponent } from "./add-photo/add-photo.component";
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   entryComponents: [
-    AddPhotoComponent
+    AddPhotoComponent,
+    LoginComponent,
+    SignupComponent
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
