@@ -3,7 +3,7 @@
   <span fxFlex></span>
   <div *ngIf="(authService.isSignedInStream | async)">
     <button md-button (click)="toProfile()">Profile</button>
-    <button md-button (click)="toBookmark()">Bookmark</button>
+    <button md-button (click)="toBookmark()">Bookmarks</button>
     <button md-button (click)="signOut()">Sign Out</button>
   </div>
   <button *ngIf="!(authService.isSignedInStream | async)" (click)="signIn()" md-button>Login</button>

@@ -5,10 +5,10 @@
     <input mdInput placeholder="Username" name="Username" [(ngModel)]="formUser.username">
   </md-input-container>
   <md-input-container >
-    <input mdInput placeholder="Password" name="password" [(ngModel)]="formUser.password">
+    <input mdInput placeholder="Password" name="password" type="password" [(ngModel)]="formUser.password">
   </md-input-container>
   <md-input-container >
-    <input mdInput placeholder="Confirm Password" name="confirmPassword" [(ngModel)]="confirmPassword">
+    <input mdInput placeholder="Confirm Password" name="confirmPassword" type="password" [(ngModel)]="confirmPassword">
   </md-input-container>
   <div>    
     <button md-button type="button" (click)="toLogin()">already have an account?</button>

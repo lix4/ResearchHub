@@ -1,27 +1,29 @@
-<h1>ResearchHub</h1>
-<div fxLayout="column" fxLayoutAlign="space-around center">
-  <md-input-container fxFill>
-    <input mdInput placeholder="Search Terms">
-  </md-input-container>
-  <button md-raised-button (click)="search()">Search</button>
-</div>
+<md-card id="background-card">
+  <h1>ResearchHub</h1>
+  <div fxLayout="column" fxLayoutAlign="space-around center">
+    <md-input-container fxFill>
+      <input mdInput placeholder="Search Terms">
+    </md-input-container>
+    <button md-raised-button (click)="search()">Search</button>
+  </div>
 
-<hr>
+  <hr>
 
-<h2>Sources <button md-button style="float: right;" (click)="newSource()"><md-icon>add</md-icon> New Source</button></h2>
-<md-grid-list cols="4" rowHeight="3:2">
-  <md-grid-tile *ngFor="let source of sources">
-    <md-card>
-      <md-card-title fxLayoutAlign="none center">
-        <span>{{source.title}}</span>
-        <span fxFlex></span>
-      </md-card-title>
-      <md-card-content>
-        <div fxLayoutAlign="none center">
-          <span>{{source.quantity}} Sources</span>
+  <h2>Sources <button md-button style="float: right;" (click)="newSource()"><md-icon>add</md-icon> New Source</button></h2>
+  <md-grid-list cols="4" rowHeight="3:2">
+    <md-grid-tile *ngFor="let source of sources">
+      <md-card>
+        <md-card-title fxLayoutAlign="none center">
+          <span>{{source.title}}</span>
           <span fxFlex></span>
-        </div>
-      </md-card-content>
-    </md-card>
-  </md-grid-tile>
-</md-grid-list>
+        </md-card-title>
+        <md-card-content>
+          <div fxLayoutAlign="none center">
+            <span>{{source.quantity}} Sources</span>
+            <span fxFlex></span>
+          </div>
+        </md-card-content>
+      </md-card>
+    </md-grid-tile>
+  </md-grid-list>
+</md-card>
