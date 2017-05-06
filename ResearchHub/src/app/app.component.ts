@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './service/auth.service';
 import { Component } from '@angular/core';
 
@@ -9,8 +10,16 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
 
+  }
+
+  toProfile(): void {
+    this.router.navigate(['/profile'])
+  }
+
+  toBookmark(): void {
+    this.router.navigate(['/bookmark'])
   }
 
   signOut(): void {
