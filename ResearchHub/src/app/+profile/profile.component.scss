@@ -8,4 +8,7 @@ img {
 md-card {
     width: 40%;
     margin: auto;
+    md-card-content {
+        padding: 0px;
+    }
 }

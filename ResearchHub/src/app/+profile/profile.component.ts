@@ -16,6 +16,8 @@ export class ProfileComponent implements OnInit {
   private userSubscription: Subscription;
   public user: User;
   public userEmail: string;
+  public editingName: boolean = false;
+  public tempName: string;
 
   constructor(public authService: AuthService, private router: Router, private af: AngularFire) { 
     if (authService._isSignedIn) {
@@ -34,5 +36,15 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
   }
 
+  editName(): void {
+    this.tempName = this.user.name
+    this.editingName = true
+  }
+
+  onSubmit(): void {
+    this.user.name = this.tempName
+    this.af.database.object("users/" + this.userid).set(this.user)
+    this.editingName = false
+  }
 
 }
