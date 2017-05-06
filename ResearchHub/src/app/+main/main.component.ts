@@ -1,6 +1,9 @@
+import { MdDialogConfig, MdDialog } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import * as Fuze from 'fuse.js';
+import { NewSourceComponent } from "../new-source/new-source.component";
+import { AuthService } from "../service/auth.service";
 
 @Component({
   selector: 'app-main',
@@ -20,7 +23,7 @@ export class MainComponent implements OnInit {
   private searchResult;
   private fuzeConfig;
 
-  constructor(private router: Router) {
+  constructor(public authService: AuthService, private router: Router, private dialog: MdDialog) {
     this.searchContent = "";
     this.fuzeConfig = {
       shouldSort: true,
@@ -52,7 +55,14 @@ export class MainComponent implements OnInit {
   }
 
   newSource(): void {
-    this.router.navigate(['/newSource'])
+    if (this.authService._isSignedIn) {
+      var dialogConfig = new MdDialogConfig()
+      dialogConfig.data = {
+        userid: this.authService._currentUserId
+      }
+      dialogConfig.width = "1000px"
+      this.dialog.open(NewSourceComponent, dialogConfig)
+    }
   }
 
 }

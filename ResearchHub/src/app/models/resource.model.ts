@@ -13,13 +13,13 @@ export class FirebaseFlatSnapshot {
 export class Resource extends FirebaseFlatSnapshot {
     title: string
     author: string
-    date_posted: Date
+    date_posted?: number
     posted_by: string
     url: string
-    abstraction: string
-    subjects: string[]
-    tags: string[]
-    reviews: Review[]
+    abstraction?: string
+    subjects?: string[]
+    tags?: string[]
+    reviews?: Review[]
 
     constructor(obj?: any) {
         super(obj)
@@ -29,8 +29,8 @@ export class Resource extends FirebaseFlatSnapshot {
         this.posted_by = obj && obj.posted_by || ""
         this.url = obj && obj.url || ""
         this.abstraction = obj && obj.abstraction || ""
-        this.subjects = obj && obj.subjects || ""
-        this.tags = obj && obj.tags || ""
-        this.reviews = obj && obj.reviews || ""
+        this.subjects = obj && obj.subjects || []
+        this.tags = obj && obj.tags || []
+        this.reviews = obj && obj.reviews || []
     }
 }
