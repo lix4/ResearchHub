@@ -2,11 +2,11 @@
   <span [routerLink]="['']">ResearchHub</span>
   <span fxFlex></span>
   <div *ngIf="(authService.isSignedInStream | async)">
-    <a href="/profile">Profile</a>
-    <a href="/bookmark">Bookmark</a>
+    <button md-button (click)="toProfile()">Profile</button>
+    <button md-button (click)="toBookmark()">Bookmark</button>
     <button md-button (click)="signOut()">Sign Out</button>
   </div>
-  <button *ngIf="!(authService.isSignedInStream | async)" [routerLink]="['/login']" md-button>Login</button>
+  <button *ngIf="!(authService.isSignedInStream | async)" (click)="signIn()" md-button>Login</button>
 </md-toolbar>
 <div fxLayoutAlign="center center">
   <div class="container" fxFlex fxFlex.md="960px" fxFlex.gt-md="1100px">

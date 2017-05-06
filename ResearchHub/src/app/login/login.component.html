@@ -1,0 +1,15 @@
+<span class="title">Login</span>
+<br />
+<div fxLayout="column" fxLayoutAlign="center stretch">
+  <md-input-container >
+    <input mdInput placeholder="Username" name="Username" [(ngModel)]="formUser.username">
+  </md-input-container>
+  <md-input-container >
+    <input mdInput placeholder="Password" name="password" [(ngModel)]="formUser.password">
+  </md-input-container>
+  <div>    
+    <button md-button type="button" (click)="toSignup()">create an account</button>
+    <span fxFlex></span>
+    <button md-button type="submit" class="login" (click)="login()">Login</button>
+  </div>
+</div>

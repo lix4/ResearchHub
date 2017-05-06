@@ -1,4 +1,12 @@
 <h1>Bookmarks</h1>
-<div>
-  <md-card *ngFor="let bookmark of bookmarks">{{bookmark.title}}</md-card>
+<div *ngFor="let bookmark of bookmarkStream | async">
+  <md-card (click)="goToBookmark(bookmark)">
+    <md-card-content>
+      <span>{{bookmark.title}}</span>
+      <span fxFlex></span>
+      <button md-icon-button (click)="deleteBookmark(bookmark)">
+        <md-icon>delete</md-icon>
+      </button>
+      </md-card-content>
+  </md-card>
 </div>
