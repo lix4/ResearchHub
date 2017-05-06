@@ -1,11 +1,11 @@
 <md-card id="background-card">
-  <h1>ResearchHub</h1>
-  <div fxLayout="column" fxLayoutAlign="space-around center">
-    <md-input-container fxFill>
-      <input mdInput placeholder="Search Terms">
-    </md-input-container>
-    <button md-raised-button (click)="search()">Search</button>
-  </div>
+<h1>ResearchHub</h1>
+<div fxLayout="column" fxLayoutAlign="space-around center">
+  <md-input-container fxFill>
+    <input mdInput placeholder="Search Terms" [(ngModel)]="searchContent">
+  </md-input-container>
+  <button md-raised-button (click)="search()">Search</button>
+</div>
 
   <hr>
 
