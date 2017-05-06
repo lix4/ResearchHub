@@ -1,3 +1,5 @@
+import { Bookmark } from "./bookmark.model";
+
 export class FirebaseFlatSnapshot {
     $key: string
     constructor(obj?: any) {
@@ -10,7 +12,7 @@ export class FirebaseFlatSnapshot {
 export class User extends FirebaseFlatSnapshot {
     photoUrl: string
     name: string
-    bookmarks: [string]
+    bookmarks: [Bookmark]
 
     constructor(obj?: any) {
         super(obj)
