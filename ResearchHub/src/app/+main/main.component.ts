@@ -1,6 +1,11 @@
+import { Subscription } from 'rxjs/Subscription';
+import { Resource } from './../models/resource.model';
+import { FirebaseListObservable, AngularFire } from 'angularfire2';
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-import * as Fuze from 'fuse.js';
+import * as Fuse from 'fuse.js';
+import * as firebase from 'firebase';
+;
 
 @Component({
   selector: 'app-main',
@@ -15,27 +20,47 @@ export class MainComponent implements OnInit {
     { title: "Test", quantity: 12 },
     { title: "Test", quantity: 12 },
   ]
+  ResourceStream: FirebaseListObservable<Resource[]>;
   private searchContent: string;
-  private fuze: Fuze;
+  private fuse: Fuse;
   private searchResult;
   private fuzeConfig;
+  firebaseRef = [];
 
-  constructor(private router: Router) {
-    this.searchContent = "";
-    this.fuzeConfig = {
-      shouldSort: true,
-      threshold: 0.6,
-      location: 0,
-      distance: 100,
-      maxPatternLength: 32,
-      minMatchCharLength: 1,
-      keys: [
-        "title",
-        "author.firstName",
-        "subject"
-      ]
-    };
-    this.fuze = new Fuze(this.sources, this.fuzeConfig);
+  constructor(private af: AngularFire, private router: Router) {
+    // this.firebaseRef = [];
+    firebase.database().ref().child("resources").on("value",
+      (snapshot: firebase.database.DataSnapshot) => {
+        this.firebaseRef = snapshot.val();
+
+
+        //config fuse.js
+        this.searchContent = "";
+        this.fuzeConfig = {
+          shouldSort: true,
+          threshold: 0.6,
+          location: 0,
+          distance: 100,
+          maxPatternLength: 32,
+          minMatchCharLength: 1,
+          keys: [
+            "data.title",
+            "data.tags",
+            "data.subjects"
+          ]
+        };
+        var objArr = [];
+        for (var key in this.firebaseRef) {
+          if (this.firebaseRef.hasOwnProperty(key)) {
+            objArr.push({
+              data: this.firebaseRef[key],
+              id: key
+            });
+          }
+        }
+        console.log("test", objArr);
+        this.fuse = new Fuse(objArr, this.fuzeConfig);
+      });
   }
 
   ngOnInit() {
@@ -44,11 +69,11 @@ export class MainComponent implements OnInit {
 
   search(): void {
     //TODO: implement this function.
-    console.log("searh " + this.searchContent);
-    this.searchResult = this.fuze.search(this.searchContent);
+    console.log("searh ", this.searchContent);
+    this.searchResult = this.fuse.search(this.searchContent);
     console.log(this.searchResult);
 
-    this.router.navigate(['/results']);
+    // this.router.navigate(['/results']);
   }
 
   newSource(): void {
