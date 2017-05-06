@@ -10,7 +10,7 @@ export class FirebaseFlatSnapshot {
 }
 
 
-export class Rsource extends FirebaseFlatSnapshot {
+export class Resource extends FirebaseFlatSnapshot {
     title: string
     author: string
     date_posted: Date
@@ -19,12 +19,18 @@ export class Rsource extends FirebaseFlatSnapshot {
     abstraction: string
     subjects: string[]
     tags: string[]
-    review: Review[];
-    sourceKey: string
+    reviews: Review[]
 
     constructor(obj?: any) {
         super(obj)
         this.title = obj && obj.title || ""
-        this.sourceKey = obj && obj.sourceKey || ""
+        this.author = obj && obj.author || ""
+        this.date_posted = obj && obj.date_posted || ""
+        this.posted_by = obj && obj.posted_by || ""
+        this.url = obj && obj.url || ""
+        this.abstraction = obj && obj.abstraction || ""
+        this.subjects = obj && obj.subjects || ""
+        this.tags = obj && obj.tags || ""
+        this.reviews = obj && obj.reviews || ""
     }
 }
