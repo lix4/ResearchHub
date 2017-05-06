@@ -1,0 +1,26 @@
+<h1 md-dialog-title class="title">New Source</h1>
+<br />
+<div class="new-source-form" fxLayout="column" fxLayoutAlign="center stretch">
+  <md-input-container class="new-source-input">
+    <input type="text" mdInput required placeholder="Source Title" name="title" [(ngModel)]="source.title">
+  </md-input-container>
+  <md-input-container class="new-source-input">
+    <input type="text" mdInput required placeholder="Source Author(s)" name="author(s)" [(ngModel)]="source.author">
+  </md-input-container>
+  <md-input-container class="new-source-input">
+    <textarea mdInput rows=10 placeholder="Source Abstract" name="abstraction" [(ngModel)]="source.abstraction"></textarea>
+  </md-input-container>
+  <md-input-container class="new-source-input">
+    <input type="date" mdInput placeholder="Source Date of Publication" name="date" [(ngModel)]="sourceDate">
+  </md-input-container>
+  <md-input-container class="new-source-input">
+    <input type="url" mdInput required placeholder="Source Link" name="link" [(ngModel)]="source.url">
+  </md-input-container>
+  <md-input-container class="new-source-input">
+    <input type="text" mdInput placeholder="Source Subject(s) seperated by semicolon" name="subjects" [(ngModel)]="subjects">
+  </md-input-container>
+  <md-input-container class="new-source-input">
+    <input type="text" mdInput placeholder="Source Tag(s) seperated by semicolon" name="tags" [(ngModel)]="tags">
+  </md-input-container>
+  <button md-raised-button type="submit" (click)="submit()">Create Source</button> 
+</div>

@@ -18,7 +18,7 @@ import { BookmarkComponent } from './+bookmark/bookmark.component';
 import { AppRoutingModule } from "./app-routing.module";
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { NewSourceComponent } from './+new-source/new-source.component';
+import { NewSourceComponent } from './new-source/new-source.component';
 import { AddPhotoComponent } from "./add-photo/add-photo.component";
 
 @NgModule({
@@ -48,7 +48,8 @@ import { AddPhotoComponent } from "./add-photo/add-photo.component";
   entryComponents: [
     AddPhotoComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    NewSourceComponent
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
