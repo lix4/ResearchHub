@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { Subscription } from "rxjs/Subscription";
 import { User } from "../models/user.model";
+import { MdDialogConfig, MdDialog } from "@angular/material";
+import { AddPhotoComponent } from "../add-photo/add-photo.component";
 
 @Component({
   selector: 'app-profile',
@@ -19,7 +21,7 @@ export class ProfileComponent implements OnInit {
   public editingName: boolean = false;
   public tempName: string;
 
-  constructor(public authService: AuthService, private router: Router, private af: AngularFire) { 
+  constructor(public authService: AuthService, private router: Router, private af: AngularFire, public dialog: MdDialog) { 
     if (authService._isSignedIn) {
       this.userid = authService._currentUserId
       console.log(this.userid);
@@ -34,6 +36,17 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  editPicture(): void {
+    var dialogConfig = new MdDialogConfig()
+    dialogConfig.data = {
+      firebasePath: "users/" + this.userid,
+      photo: this.user.photoUrl
+    }
+    dialogConfig.height = "230px"
+    dialogConfig.width = "400px"
+    this.dialog.open(AddPhotoComponent, dialogConfig)
   }
 
   editName(): void {

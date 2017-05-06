@@ -19,6 +19,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { LoginComponent } from './+login/login.component';
 import { SignupComponent } from './+signup/signup.component';
 import { NewSourceComponent } from './+new-source/new-source.component';
+import { AddPhotoComponent } from "./add-photo/add-photo.component";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { NewSourceComponent } from './+new-source/new-source.component';
     BookmarkComponent,
     LoginComponent,
     SignupComponent,
-    NewSourceComponent
+    NewSourceComponent,
+    AddPhotoComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +44,9 @@ import { NewSourceComponent } from './+new-source/new-source.component';
     RouterModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
+  ],
+  entryComponents: [
+    AddPhotoComponent
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

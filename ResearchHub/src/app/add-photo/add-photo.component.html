@@ -1,0 +1,21 @@
+<div group="box" fxFlex fxLayout="column" fxLayoutAlign="none stretch">
+  <span class="title">Add a new Photo</span>
+  <br>
+  <md-input-container>
+    <input mdInput placeholder="Add an existing photo URL" required  name="url" [(ngModel)]="photo">
+  </md-input-container>
+  <br>
+  <div fxLayout="Row" fxLayoutAlign="end center">
+    <md-spinner id="spinner"></md-spinner>
+    <div id=uploadBar>
+      <span> or </span>
+      <input class="uploadButton" type="file"  name="file" id="file" (change)="uploadPicture($event)">
+      <label for="file">Upload an image</label>
+    </div>
+  </div>
+  <br>
+  <div fxLayout="Row" fxLayoutAlign="end center">
+    <button md-button class="actionButton" (click)="cancel()">Cancel</button>
+    <button md-button class="actionButton" (click)="save()">Save</button>
+  </div>
+</div>
