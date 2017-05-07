@@ -1,3 +1,4 @@
+import { SearchService } from './service/search.service';
 import { AuthService } from './service/auth.service';
 import { RouterModule } from "@angular/router";
 import { environment } from './../environments/environment';
@@ -51,7 +52,7 @@ import { AddPhotoComponent } from "./add-photo/add-photo.component";
     SignupComponent,
     NewSourceComponent
   ],
-  providers: [AuthService],
+  providers: [AuthService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
