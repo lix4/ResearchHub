@@ -1,7 +1,14 @@
 <div fxLayout="row" fxLayoutAlign="space-around center">
   <md-input-container>
-    <input mdInput placeholder="Search Terms">
+    <input mdInput placeholder="Search Terms" [(ngModel)]="searchContent">
   </md-input-container>
-  <button md-raised-button (click)="search()">Search</button>
+  <button md-raised-button [disabled]="!searchContent" (click)="resultSearch()">Search</button>
 </div>
 <hr>
+<div fxLayout="column" fxLayoutAlign="space-between stretch">
+  <md-card *ngFor="let resource of this.searchService.getSearchResult" (click)="goToDetail(resource.id)">
+    <span>{{resource.data.title}}</span>
+    <br>
+    <span>{{resource.data.author}}</span>
+  </md-card>
+</div>

@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { SearchService } from './../service/search.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,14 +8,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./results.component.scss']
 })
 export class ResultsComponent implements OnInit {
+  private searchContent: string;
+  private searchResults;
 
-  constructor() { }
+  constructor(private searchService: SearchService, private router: Router) {
+
+  }
 
   ngOnInit() {
-  }
-
-  search(): void {
 
   }
+
+  resultSearch(): void {
+    this.searchService.search(this.searchContent);
+    this.searchResults = this.searchService.getSearchResult;
+    console.log(this.searchResults);
+  }
+
+  goToDetail(id: string): void {
+    console.log(`/details/${id}`);
+    this.router.navigate([`/details/${id}`]);
+  }
+
+
 
 }
