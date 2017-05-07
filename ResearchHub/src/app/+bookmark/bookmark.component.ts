@@ -14,12 +14,14 @@ export class BookmarkComponent implements OnInit {
   private userid : String
 
   constructor(public authService: AuthService, private router: Router, private af: AngularFire) { 
-    if (authService._isSignedIn) {
-      this.userid = authService._currentUserId
-      this.bookmarkStream = this.af.database.list("users/" + this.userid + "/bookmarks")
-    } else {
-      this.router.navigate([''])
-    }
+    authService.isSignedInStream.subscribe( (isSignedIn: boolean) => {
+      if (isSignedIn) {
+        this.userid = authService._currentUserId
+        this.bookmarkStream = this.af.database.list("users/" + this.userid + "/bookmarks")
+      } else {
+        this.router.navigate([''])
+      }
+    })
   }
 
   ngOnInit() {

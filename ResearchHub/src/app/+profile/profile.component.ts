@@ -22,17 +22,19 @@ export class ProfileComponent implements OnInit, OnDestroy {
   public tempName: string;
 
   constructor(public authService: AuthService, private router: Router, private af: AngularFire, public dialog: MdDialog) { 
-    if (authService._isSignedIn) {
-      this.userid = authService._currentUserId
-      console.log(this.userid);
-      this.userEmail = authService._currentUserEmail
-      var userStream = this.af.database.object("users/" + this.userid)
-      this.userSubscription = userStream.subscribe( (user: User) => {
-        this.user = user
-      })
-    } else {
-      this.router.navigate([''])
-    }
+    authService.isSignedInStream.subscribe( (isSignedIn: boolean) => {
+      if (isSignedIn) {
+        this.userid = authService._currentUserId
+        console.log(this.userid);
+        this.userEmail = authService._currentUserEmail
+        var userStream = this.af.database.object("users/" + this.userid)
+        this.userSubscription = userStream.subscribe( (user: User) => {
+          this.user = user
+        })
+      } else {
+        this.router.navigate([''])
+      }
+    })
   }
 
   ngOnInit() {
