@@ -31,6 +31,9 @@ export class AddPhotoComponent implements OnInit {
     if (this.photo != null && this.photo != undefined && this.photo != "") {
       firebase.database().ref().child(this.firebasePath).child("photoUrl").set(this.photo)
       this.dialogRef.close()
+    } else {
+      firebase.database().ref().child(this.firebasePath).child("photoUrl").remove()
+      this.dialogRef.close()
     }
   }
 
