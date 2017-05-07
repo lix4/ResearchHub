@@ -9,6 +9,7 @@
   <md-card-title>{{source.title}}</md-card-title>
   <md-card-content>
     <button md-raised-button id="source-link" (click)="goToSource()">Link to Source</button>
+    <button md-raised-button id="bookmark-link" (click)="bookmarkSource()" *ngIf="showBookmarkLink()">Bookmark Source</button>
     <p>Authors: {{source.author}}</p>
     <p>Date Published: {{date_posted}}</p>
     <p *ngIf="source.abstraction">Abstract: {{source.abstraction}}</p>

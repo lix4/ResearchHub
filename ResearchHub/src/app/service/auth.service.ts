@@ -19,8 +19,6 @@ export class AuthService {
       } else {
         console.log("You are not signed in!");
         this._isSignedIn = false;
-        this._currentUserEmail = null
-        this._currentUserId = null;
       }
     });
   }
