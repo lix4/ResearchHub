@@ -14,7 +14,7 @@ const routes: Routes = [
     // canActivate: [AuthGuardService]
   },
   {
-    path: 'details',
+    path: 'details/:sourceid',
     component: DetailsComponent
   },
   {

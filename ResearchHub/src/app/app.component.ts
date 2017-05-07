@@ -25,6 +25,7 @@ export class AppComponent {
   }
 
   signOut(): void {
+    this.router.navigate([''])
     this.authService.logout();
   }
 

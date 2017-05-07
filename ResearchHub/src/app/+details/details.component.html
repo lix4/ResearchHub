@@ -1,26 +1,38 @@
-<div fxLayout="row" fxLayoutAlign="space-around center">
+<md-card fxLayout="row" fxLayoutAlign="space-around center">
   <md-input-container>
     <input mdInput placeholder="Search Terms">
   </md-input-container>
   <button md-raised-button (click)="search()">Search</button>
-</div>
+</md-card>
 <hr>
-<h2>Forests</h2>
-<p>very good!</p>
-<button md-raised-button id="source-link">Link to Source</button>
+<md-card *ngIf="source">
+  <md-card-title>{{source.title}}</md-card-title>
+  <md-card-content>
+    <button md-raised-button id="source-link" (click)="goToSource()">Link to Source</button>
+    <button md-raised-button id="bookmark-link" (click)="bookmarkSource()" *ngIf="showBookmarkLink()">Bookmark Source</button>
+    <p>Authors: {{source.author}}</p>
+    <p>Date Published: {{date_posted}}</p>
+    <p *ngIf="source.abstraction">Abstract: {{source.abstraction}}</p>
+  </md-card-content>
+</md-card>
 <hr>
-<h3>Review</h3>
-<md-input-container>
-  <input mdInput>
-</md-input-container>
-<button md-raised-button>Submit</button>
-<md-list>
-  <md-list-item *ngFor="let message of messages">
-    <img md-list-avatar src="..." alt="...">
-    <h3 md-line> {{message.from}} </h3>
-    <p md-line>
-      <span> {{message.subject}} </span>
-      <span class="demo-2"> -- {{message.content}} </span>
-    </p>
-  </md-list-item>
-</md-list>
+<md-card>
+  <md-card-title>Reviews</md-card-title>
+  <md-card>
+    <md-input-container>
+      <input mdInput>
+    </md-input-container>
+    <span fxFlex></span>
+    <button md-raised-button>Submit</button>
+  </md-card>
+  <md-list>
+    <md-list-item *ngFor="let message of messages">
+      <img md-list-avatar src="..." alt="...">
+      <h3 md-line> {{message.from}} </h3>
+      <p md-line>
+        <span> {{message.subject}} </span>
+        <span class="demo-2"> -- {{message.content}} </span>
+      </p>
+    </md-list-item>
+  </md-list>
+</md-card>

@@ -7,10 +7,18 @@ button:first-of-type {
     float: right;
 }
 
+#bookmark-link {
+    float: right;
+}
+
 md-input-container {
   width: 70%;
 }
 
 div {
   margin-top: 1%;
+}
+
+md-card {
+  margin-top: 5px;
 }

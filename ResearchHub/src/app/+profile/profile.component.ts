@@ -1,7 +1,7 @@
 import { AngularFireModule, AngularFire } from 'angularfire2';
 import { Router } from '@angular/router';
 import { AuthService } from './../service/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import * as firebase from 'firebase';
 import { Subscription } from "rxjs/Subscription";
 import { User } from "../models/user.model";
@@ -13,7 +13,7 @@ import { AddPhotoComponent } from "../add-photo/add-photo.component";
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
   private userid: string;
   private userSubscription: Subscription;
   public user: User;
@@ -36,6 +36,10 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy(): void {
+    this.userSubscription.unsubscribe()
   }
 
   editPicture(): void {
