@@ -7,8 +7,7 @@
 <hr>
 <div fxLayout="column" fxLayoutAlign="space-between stretch">
   <md-card *ngFor="let resource of this.searchService.getSearchResult" (click)="goToDetail(resource.id)">
-    <span>{{resource.data.title}}</span>
-    <br>
-    <span>{{resource.data.author}}</span>
+    <md-card-title>{{resource.data.title}}</md-card-title>
+    <md-card-content>{{resource.data.author}}</md-card-content>
   </md-card>
 </div>
