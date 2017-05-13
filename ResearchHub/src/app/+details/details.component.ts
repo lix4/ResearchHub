@@ -1,3 +1,4 @@
+import { SearchService } from './../service/search.service';
 import { Review } from './../models/review.model';
 import { Subscription } from 'rxjs/Subscription';
 import { Bookmark } from './../models/bookmark.model';
@@ -29,8 +30,10 @@ export class DetailsComponent implements OnInit, OnDestroy {
   public reviewCopy: Review
   public showReviewSubmission = true
   public editingReview = false
+  public searchContent: string;
+  public searchResults;
 
-  constructor(private af: AngularFire, private authService: AuthService, private route: ActivatedRoute) { 
+  constructor(public searchService: SearchService, private af: AngularFire, private authService: AuthService, private route: ActivatedRoute) { 
     this.review = new Review()
     this.review.rating = 3
     this.routerSubscription = this.route.params.subscribe( (params: Params) => {
@@ -83,6 +86,12 @@ export class DetailsComponent implements OnInit, OnDestroy {
       this.bookmarkSubscription.unsubscribe()
     if (this.reviewSubscription)
       this.reviewSubscription.unsubscribe()
+  }
+
+  resultSearch(): void {
+    this.searchService.search(this.searchContent);
+    this.searchResults = this.searchService.getSearchResult;
+    console.log(this.searchResults);
   }
 
   showBookmarkLink(): boolean {
