@@ -1,7 +1,7 @@
 <md-card>
   <form (ngSubmit)="resultSearch()" fxLayout="row" fxLayoutAlign="space-around center">
     <md-input-container>
-      <input mdInput placeholder="Search Terms" [(ngModel)]="this.searchService.searchContent">
+      <input mdInput placeholder="Search Terms" name="contents" [(ngModel)]="this.searchService.searchContent">
     </md-input-container>
     <button md-raised-button [disabled]="!searchContent" (click)="resultSearch()">Search</button>
   </form>
