@@ -6,6 +6,10 @@
 </md-card>
 <hr>
 <md-card *ngIf="source">
+  <div *ngIf="source.posted_by == authService._currentUserId">
+    <button md-raised-button id="source-link" (click)="editSource()">Edit Source</button>
+    <button md-raised-button id="bookmark-link" (click)="deleteSource()">Delete Source</button>
+  </div>
   <md-card-title>{{source.title}}</md-card-title>
   <md-card-content>
     <button md-raised-button id="source-link" (click)="goToSource()">Link to Source</button>
@@ -18,22 +22,28 @@
 <hr>
 <md-card>
   <md-card-title>Reviews</md-card-title>
-  <md-card>
-    <md-input-container>
-      <input mdInput>
-    </md-input-container>
-    <rating [(ngModel)]="review.rating"></rating>
-    <span fxFlex></span>
-    <button md-raised-button>Submit</button>
+  <md-card *ngIf="showReviewSubmission || editingReview;else myReviewTemplate">
+    <form #mqForm="ngForm" (ngSubmit)="onSubmit()">
+      <md-input-container fxFlex>
+        <input mdInput name="review" [(ngModel)]="review.review">
+      </md-input-container>
+      <rating name="rating" [(ngModel)]="review.rating"></rating>
+    </form>
   </md-card>
-  <md-list>
-    <md-list-item *ngFor="let message of messages">
-      <img md-list-avatar src="..." alt="...">
-      <h3 md-line> {{message.from}} </h3>
-      <p md-line>
-        <span> {{message.subject}} </span>
-        <span class="demo-2"> -- {{message.content}} </span>
-      </p>
-    </md-list-item>
-  </md-list>
+  <ng-template #myReviewTemplate>
+      <md-card fxLayoutAlign="space-between center" *ngIf="authService._currentUserId">
+        <p>{{reviewCopy.review}}</p>
+        <div>
+          <rating [(ngModel)]="reviewCopy.rating" [readonly]="true"></rating>
+          <button md-icon-button (click)="editReview()"><md-icon>create</md-icon></button>
+          <button md-icon-button (click)="deleteReview()"><md-icon>delete</md-icon></button>
+        </div>
+      </md-card>
+  </ng-template>
+  <div *ngFor="let message of reviewStream| async">
+      <md-card fxLayoutAlign="space-between center" *ngIf="message.author != authService._currentUserId">
+        <p>{{message.review}}</p>
+        <rating class="readonlyReivews" [(ngModel)]="message.rating" [readonly]="true"></rating>
+      </md-card>
+  </div>
 </md-card>

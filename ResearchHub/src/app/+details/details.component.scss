@@ -1,4 +1,4 @@
-button:first-of-type {
+button {
   background: #F57C00;
   color: white;
 }
@@ -21,4 +21,8 @@ div {
 
 md-card {
   margin-top: 5px;
+}
+
+rating {
+  width: 200px;
 }
