@@ -14,6 +14,7 @@
   </div>
   <md-card-title>{{source.title}}</md-card-title>
   <md-card-content>
+    <rating [(ngModel)]="overallRating" *ngIf="overallRating" [readonly]="true"></rating>
     <button md-raised-button id="source-link" (click)="goToSource()">Link to Source</button>
     <button md-raised-button id="bookmark-link" (click)="bookmarkSource()" *ngIf="showBookmarkLink()">Bookmark Source</button>
     <p>Authors: {{source.author}}</p>

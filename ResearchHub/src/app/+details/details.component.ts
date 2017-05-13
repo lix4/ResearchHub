@@ -32,6 +32,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   public editingReview = false
   public searchContent: string;
   public searchResults;
+  public overallRating
 
   constructor(public searchService: SearchService, private af: AngularFire, private authService: AuthService, private route: ActivatedRoute) { 
     this.review = new Review()
@@ -42,12 +43,19 @@ export class DetailsComponent implements OnInit, OnDestroy {
       this.reviewSubscription = this.reviewStream.subscribe( (reviews: Review[]) => {
         if (authService._currentUserId) {
           this.showReviewSubmission = true
+          var total = 0
+          var count = 0
           reviews.forEach(element => {
+            total += element.rating
+            count ++
             if (element.author == authService._currentUserId) {
               this.showReviewSubmission = false
               this.reviewCopy = element
             }
           });
+          if (count != 0) {
+            this.overallRating = total / count
+          }
         }
       })
       var tempSource = af.database.object("resources/" + this.sourceid)
