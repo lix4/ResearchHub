@@ -5,7 +5,7 @@ import { Bookmark } from './../models/bookmark.model';
 import { Resource } from './../models/resource.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from "angularfire2";
-import { ActivatedRoute, Params } from "@angular/router";
+import { ActivatedRoute, Params, Router } from "@angular/router";
 import { AuthService } from "../service/auth.service";
 import { User } from "../models/user.model";
 
@@ -30,11 +30,11 @@ export class DetailsComponent implements OnInit, OnDestroy {
   public reviewCopy: Review
   public showReviewSubmission = true
   public editingReview = false
-  public searchContent: string;
+  public searchContent: string = this.searchService.searchContent;
   public searchResults;
   public overallRating
 
-  constructor(public searchService: SearchService, private af: AngularFire, private authService: AuthService, private route: ActivatedRoute) {
+  constructor(public searchService: SearchService, private router: Router, private af: AngularFire, private authService: AuthService, private route: ActivatedRoute) {
     this.review = new Review()
     this.review.rating = 3
     this.routerSubscription = this.route.params.subscribe((params: Params) => {
@@ -97,9 +97,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
   }
 
   resultSearch(): void {
-    this.searchService.search(this.searchService.searchContent);
-    this.searchResults = this.searchService.getSearchResult;
-    console.log(this.searchResults);
+    this.searchService.search(this.searchContent);
+    this.router.navigate(['/results'])
   }
 
   showBookmarkLink(): boolean {

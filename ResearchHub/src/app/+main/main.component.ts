@@ -28,6 +28,7 @@ export class MainComponent implements OnInit {
 
   mainSearch(): void {
     this.searchService.search(this.searchContent);
+    this.router.navigate(['/results'])
   }
 
 

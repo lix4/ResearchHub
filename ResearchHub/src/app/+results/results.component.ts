@@ -1,3 +1,5 @@
+import { Review } from './../models/review.model';
+import { Resource } from './../models/resource.model';
 import { Router } from '@angular/router';
 import { SearchService } from './../service/search.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,14 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultsComponent implements OnInit {
   public searchContent: string;
-  public searchResults;
+  public searchResults = this.searchService.getSearchResult;
 
   constructor(public searchService: SearchService, private router: Router) {
     this.searchContent = this.searchService.searchContent;
   }
 
   ngOnInit() {
-
   }
 
   resultSearch(): void {
@@ -29,7 +30,5 @@ export class ResultsComponent implements OnInit {
     console.log(`/details/${id}`);
     this.router.navigate([`/details/${id}`]);
   }
-
-
 
 }

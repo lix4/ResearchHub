@@ -3,13 +3,16 @@
     <md-input-container>
       <input mdInput placeholder="Search Terms" name="contents" [(ngModel)]="this.searchService.searchContent">
     </md-input-container>
-    <button md-raised-button [disabled]="!this.searchService.searchContent" (click)="resultSearch()">Search</button>
+    <button md-raised-button [disabled]="!this.searchService.searchContent" type="submit">Search</button>
   </form>
 </md-card>
 <hr>
 <div fxLayout="column" fxLayoutAlign="space-between stretch">
-  <md-card *ngFor="let resource of this.searchService.getSearchResult" (click)="goToDetail(resource.id)">
+  <md-card *ngFor="let resource of searchResults; let index = index" (click)="goToDetail(resource.id)">
     <md-card-title>{{resource.data.title}}</md-card-title>
-    <md-card-content>{{resource.data.author}}</md-card-content>
+    <md-card-content>
+      <span>{{resource.data.author}}</span>
+      <rating [(ngModel)]="resourceRatings[index]" [readonly]="true"></rating>
+    </md-card-content>
   </md-card>
 </div>
