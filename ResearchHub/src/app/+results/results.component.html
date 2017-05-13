@@ -3,7 +3,7 @@
     <md-input-container>
       <input mdInput placeholder="Search Terms" name="contents" [(ngModel)]="this.searchService.searchContent">
     </md-input-container>
-    <button md-raised-button [disabled]="!searchContent" (click)="resultSearch()">Search</button>
+    <button md-raised-button [disabled]="!this.searchService.searchContent" (click)="resultSearch()">Search</button>
   </form>
 </md-card>
 <hr>

@@ -34,20 +34,20 @@ export class DetailsComponent implements OnInit, OnDestroy {
   public searchResults;
   public overallRating
 
-  constructor(public searchService: SearchService, private af: AngularFire, private authService: AuthService, private route: ActivatedRoute) { 
+  constructor(public searchService: SearchService, private af: AngularFire, private authService: AuthService, private route: ActivatedRoute) {
     this.review = new Review()
     this.review.rating = 3
-    this.routerSubscription = this.route.params.subscribe( (params: Params) => {
+    this.routerSubscription = this.route.params.subscribe((params: Params) => {
       this.sourceid = params['sourceid']
       this.reviewStream = af.database.list("resources/" + this.sourceid + "/reviews")
-      this.reviewSubscription = this.reviewStream.subscribe( (reviews: Review[]) => {
+      this.reviewSubscription = this.reviewStream.subscribe((reviews: Review[]) => {
         if (authService._currentUserId) {
           this.showReviewSubmission = true
           var total = 0
           var count = 0
           reviews.forEach(element => {
             total += element.rating
-            count ++
+            count++
             if (element.author == authService._currentUserId) {
               this.showReviewSubmission = false
               this.reviewCopy = element
@@ -59,22 +59,22 @@ export class DetailsComponent implements OnInit, OnDestroy {
         }
       })
       var tempSource = af.database.object("resources/" + this.sourceid)
-      tempSource.subscribe( (snapshot: any) => {
+      tempSource.subscribe((snapshot: any) => {
         this.source = snapshot
         this.date_posted = new Date(this.source.date_posted).toDateString()
       })
     })
 
-    authService.isSignedInStream.subscribe( (isSignedIn: boolean) => {
+    authService.isSignedInStream.subscribe((isSignedIn: boolean) => {
       if (isSignedIn) {
-      this.userid = authService._currentUserId
+        this.userid = authService._currentUserId
         var userStream = this.af.database.object("users/" + this.userid)
-        this.userSubscription = userStream.subscribe( (user: User) => {
+        this.userSubscription = userStream.subscribe((user: User) => {
           this.user = user
         })
         var bookmarkStream = this.af.database.list("users/" + this.userid + "/bookmarks")
-        this.bookmarkSubscription = bookmarkStream.subscribe( (bookmarks: [any]) => {
-          bookmarks.forEach( (bookmark: Bookmark)=>{
+        this.bookmarkSubscription = bookmarkStream.subscribe((bookmarks: [any]) => {
+          bookmarks.forEach((bookmark: Bookmark) => {
             if (bookmark.sourceKey === this.sourceid) {
               this.bookmarked = true
             }
@@ -97,7 +97,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   }
 
   resultSearch(): void {
-    this.searchService.search(this.searchContent);
+    this.searchService.search(this.searchService.searchContent);
     this.searchResults = this.searchService.getSearchResult;
     console.log(this.searchResults);
   }
@@ -107,7 +107,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   }
 
   bookmarkSource(): void {
-    if (this.authService._currentUserId){
+    if (this.authService._currentUserId) {
       this.af.database.list("users/" + this.authService._currentUserId + "/bookmarks").push(
         { title: this.source.title, sourceKey: this.sourceid }
       )
@@ -128,13 +128,13 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
   onSubmit(): void {
     if (this.review.$key) {
-      this.af.database.object("resources/" + this.sourceid + "/reviews/" + this.review.$key).set(this.review).then( ()=>{
+      this.af.database.object("resources/" + this.sourceid + "/reviews/" + this.review.$key).set(this.review).then(() => {
         this.review = new Review()
         this.editingReview = false
       })
     } else {
       this.review.author = this.authService._currentUserId
-      this.af.database.list("resources/" + this.sourceid + "/reviews").push(this.review).then( ()=>{
+      this.af.database.list("resources/" + this.sourceid + "/reviews").push(this.review).then(() => {
         this.review = new Review()
       })
     }
