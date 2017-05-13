@@ -5,7 +5,7 @@ import * as firebase from 'firebase';
 
 @Injectable()
 export class SearchService {
-  private searchContent: string;
+  public searchContent: string;
   private fuse: Fuse;
   private searchResult;
   private fuzeConfig;
@@ -47,6 +47,7 @@ export class SearchService {
 
   search(item: string): void {
     console.log("searh ", item);
+    this.searchContent = item;
     this.searchResult = this.fuse.search(item);
     this.router.navigate(['/results']);
   }

@@ -12,7 +12,7 @@ export class ResultsComponent implements OnInit {
   public searchResults;
 
   constructor(public searchService: SearchService, private router: Router) {
-
+    this.searchContent = this.searchService.searchContent;
   }
 
   ngOnInit() {
@@ -22,7 +22,7 @@ export class ResultsComponent implements OnInit {
   resultSearch(): void {
     this.searchService.search(this.searchContent);
     this.searchResults = this.searchService.getSearchResult;
-    console.log(this.searchResults);
+    console.log("keep this search result: ", this.searchResults);
   }
 
   goToDetail(id: string): void {
