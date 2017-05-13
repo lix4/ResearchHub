@@ -1,3 +1,4 @@
+import { Review } from './../models/review.model';
 import { Subscription } from 'rxjs/Subscription';
 import { Bookmark } from './../models/bookmark.model';
 import { Resource } from './../models/resource.model';
@@ -22,8 +23,11 @@ export class DetailsComponent implements OnInit, OnDestroy {
   private bookmarkSubscription: Subscription
   public user: User
   public bookmarked: boolean = false
+  public review: Review
 
   constructor(private af: AngularFire, private authService: AuthService, private route: ActivatedRoute) { 
+    this.review = new Review()
+    this.review.rating = 3
     this.routerSubscription = this.route.params.subscribe( (params: Params) => {
       this.sourceid = params['sourceid']
       var tempSource = af.database.object("resources/" + this.sourceid)

@@ -21,6 +21,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { NewSourceComponent } from './new-source/new-source.component';
 import { AddPhotoComponent } from "./add-photo/add-photo.component";
+import {RatingModule} from "ngx-rating";
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { AddPhotoComponent } from "./add-photo/add-photo.component";
     FlexLayoutModule,
     RouterModule,
     AppRoutingModule,
+    RatingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   entryComponents: [
