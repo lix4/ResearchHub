@@ -8,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./results.component.scss']
 })
 export class ResultsComponent implements OnInit {
-  private searchContent: string;
-  private searchResult;
+  public searchContent: string;
+  public searchResults;
 
-  constructor(private searchService: SearchService, private router: Router) {
+  constructor(public searchService: SearchService, private router: Router) {
     this.searchContent = this.searchService.searchContent;
   }
 
@@ -21,8 +21,8 @@ export class ResultsComponent implements OnInit {
 
   resultSearch(): void {
     this.searchService.search(this.searchContent);
-    this.searchResult = this.searchService.getSearchResult;
-    console.log("keep this search result: ", this.searchResult);
+    this.searchResults = this.searchService.getSearchResult;
+    console.log("keep this search result: ", this.searchResults);
   }
 
   goToDetail(id: string): void {
