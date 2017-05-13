@@ -21,6 +21,12 @@ export class NewSourceComponent implements OnInit {
   constructor(private af: AngularFire, private router: Router, private dialogRef: MdDialogRef<NewSourceComponent>) { 
     this.data = dialogRef._containerInstance.dialogConfig.data
     this.userid = this.data.userid
+    if (this.data.source) {
+      this.source = this.data.source
+      this.data = new Date(this.source.date_posted)
+      this.tags = this.source.tags.join(';')
+      this.subjects = this.source.subjects.join(';')
+    }
   }
 
   ngOnInit() {

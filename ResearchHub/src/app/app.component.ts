@@ -12,7 +12,7 @@ import { LoginComponent } from "./login/login.component";
 export class AppComponent {
 
 
-  constructor(private authService: AuthService, private router: Router, private dialog: MdDialog) {
+  constructor(public authService: AuthService, private router: Router, private dialog: MdDialog) {
 
   }
 

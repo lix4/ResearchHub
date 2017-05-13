@@ -8,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./results.component.scss']
 })
 export class ResultsComponent implements OnInit {
-  private searchContent: string;
-  private searchResults;
+  public searchContent: string;
+  public searchResults;
 
-  constructor(private searchService: SearchService, private router: Router) {
+  constructor(public searchService: SearchService, private router: Router) {
 
   }
 

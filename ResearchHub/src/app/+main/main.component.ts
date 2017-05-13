@@ -15,14 +15,8 @@ import { Router } from "@angular/router";
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  // sources = [
-  //   { title: "Test", quantity: 12 },
-  //   { title: "Forests", quantity: 90 },
-  //   { title: "Test", quantity: 12 },
-  //   { title: "Test", quantity: 12 },
-  //   { title: "Test", quantity: 12 },
-  // ]
-  private searchContent: string;
+  public sources = []
+  public searchContent: string;
 
   constructor(private searchService: SearchService, public authService: AuthService, private af: AngularFire, private router: Router, private dialog: MdDialog) {
 
