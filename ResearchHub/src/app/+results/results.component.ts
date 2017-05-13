@@ -9,10 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultsComponent implements OnInit {
   private searchContent: string;
-  private searchResults;
+  private searchResult;
 
   constructor(private searchService: SearchService, private router: Router) {
-
+    this.searchContent = this.searchService.searchContent;
   }
 
   ngOnInit() {
@@ -21,8 +21,8 @@ export class ResultsComponent implements OnInit {
 
   resultSearch(): void {
     this.searchService.search(this.searchContent);
-    this.searchResults = this.searchService.getSearchResult;
-    console.log(this.searchResults);
+    this.searchResult = this.searchService.getSearchResult;
+    console.log("keep this search result: ", this.searchResult);
   }
 
   goToDetail(id: string): void {
