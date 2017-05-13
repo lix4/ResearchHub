@@ -28,7 +28,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   public review: Review
   public reviewCopy: Review
   public showReviewSubmission = true
-  public editingReview= false
+  public editingReview = false
 
   constructor(private af: AngularFire, private authService: AuthService, private route: ActivatedRoute) { 
     this.review = new Review()
@@ -43,7 +43,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
             if (element.author == authService._currentUserId) {
               this.showReviewSubmission = false
               this.reviewCopy = element
-              console.log(this.reviewCopy)
             }
           });
         }
@@ -82,6 +81,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
       this.userSubscription.unsubscribe()
     if (this.bookmarkSubscription)
       this.bookmarkSubscription.unsubscribe()
+    if (this.reviewSubscription)
+      this.reviewSubscription.unsubscribe()
   }
 
   showBookmarkLink(): boolean {
@@ -91,9 +92,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
   bookmarkSource(): void {
     if (this.authService._currentUserId){
       this.af.database.list("users/" + this.authService._currentUserId + "/bookmarks").push(
-        {title: this.source.title, sourceKey: this.sourceid}).then( ()=> {
-          console.log("pushed")
-      })
+        { title: this.source.title, sourceKey: this.sourceid }
+      )
     }
   }
 
@@ -117,7 +117,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
       })
     } else {
       this.review.author = this.authService._currentUserId
-      console.log("This is my review", this.review)
       this.af.database.list("resources/" + this.sourceid + "/reviews").push(this.review).then( ()=>{
         this.review = new Review()
       })
