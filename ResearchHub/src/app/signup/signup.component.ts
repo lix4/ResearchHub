@@ -36,6 +36,12 @@ export class SignupComponent implements OnInit {
     }
   }
 
+  passwordMatch(): boolean {
+    if (this.confirmPassword === this.formUser.password)
+      return true
+    return false
+  }
+
   toLogin(): void {
     var dialogConfig = new MdDialogConfig()
     dialogConfig.height = "230px"

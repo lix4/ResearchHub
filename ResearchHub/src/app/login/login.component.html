@@ -2,8 +2,8 @@
 <br />
 <form fxLayout="column" fxLayoutAlign="center stretch" (ngSubmit)="login()">
   <md-input-container >
-    <input mdInput required placeholder="Username" name="Username" [(ngModel)]="formUser.username">
-    <md-error>A username is required</md-error>
+    <input mdInput required type="email" placeholder="Email" name="Email" [(ngModel)]="formUser.username">
+    <md-error>An Email is required</md-error>
   </md-input-container>
   <md-input-container >
     <input mdInput required placeholder="Password" name="password" type="password" [(ngModel)]="formUser.password">
