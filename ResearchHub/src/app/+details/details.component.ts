@@ -1,4 +1,4 @@
-import { MdDialog } from '@angular/material';
+import { MdDialog, MdDialogConfig } from '@angular/material';
 import { SearchService } from './../service/search.service';
 import { Review } from './../models/review.model';
 import { Subscription } from 'rxjs/Subscription';
@@ -10,6 +10,7 @@ import { ActivatedRoute, Params, Router } from "@angular/router";
 import { AuthService } from "../service/auth.service";
 import { User } from "../models/user.model";
 import { ConfirmationComponent } from "../confirmation/confirmation.component";
+import { NewSourceComponent } from "../new-source/new-source.component";
 
 @Component({
   selector: 'app-details',
@@ -120,7 +121,15 @@ export class DetailsComponent implements OnInit, OnDestroy {
   }
 
   editSource(): void {
-    console.log("TODO: Implement")
+    if (this.authService._isSignedIn) {
+      var dialogConfig = new MdDialogConfig()
+      dialogConfig.data = {
+        userid: this.authService._currentUserId,
+        source: this.source
+      }
+      dialogConfig.width = "1000px"
+      this.dialog.open(NewSourceComponent, dialogConfig)
+    }
   }
 
   deleteSource(): void {

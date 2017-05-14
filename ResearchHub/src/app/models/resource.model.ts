@@ -31,6 +31,8 @@ export class Resource extends FirebaseFlatSnapshot {
         this.abstraction = obj && obj.abstraction || ""
         this.subjects = obj && obj.subjects || []
         this.tags = obj && obj.tags || []
-        this.reviews = obj && obj.reviews || []
+        if (obj && obj.reviews) {
+            this.reviews = obj.reviews
+        }
     }
 }
