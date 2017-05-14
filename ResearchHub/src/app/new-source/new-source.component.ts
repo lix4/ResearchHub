@@ -17,15 +17,25 @@ export class NewSourceComponent implements OnInit {
   public subjects: string
   private data: any
   private userid: string;
+  public action: string = "Create"
+  public title: string = "New"
+  private $key;
 
   constructor(private af: AngularFire, private router: Router, private dialogRef: MdDialogRef<NewSourceComponent>) { 
     this.data = dialogRef._containerInstance.dialogConfig.data
     this.userid = this.data.userid
     if (this.data.source) {
-      this.source = this.data.source
-      this.data = new Date(this.source.date_posted)
-      this.tags = this.source.tags.join(';')
-      this.subjects = this.source.subjects.join(';')
+      this.source.title = this.data.source.title
+      this.source.author = this.data.source.author
+      this.source.abstraction = this.data.source.abstraction
+      this.source.posted_by = this.data.source.posted_by
+      this.source.url = this.data.source.url
+      this.$key = this.data.source.$key
+      this.sourceDate = new Date(this.data.source.date_posted)
+      this.tags = this.data.source.tags.join(';')
+      this.subjects = this.data.source.subjects.join(';')
+      this.action = "Save"
+      this.title = "Edit"
     }
   }
 
@@ -39,9 +49,17 @@ export class NewSourceComponent implements OnInit {
       this.source.posted_by = this.userid
       this.source.tags = this.tags.split(";")
       this.source.subjects = this.subjects.split(";")
-      this.af.database.list("resources").push(this.source).then( ()=> {
-          this.dialogRef.close()
-      });
+      if (this.$key) {
+        console.log("editing")
+        console.log(this.source.reviews)
+        this.af.database.object("resources/" + this.$key).update(this.source).then( ()=> {
+            this.dialogRef.close()
+        });
+      } else {
+        this.af.database.list("resources").push(this.source).then( ()=> {
+            this.dialogRef.close()
+        });
+      }
     }
   }
 }

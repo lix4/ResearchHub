@@ -22,7 +22,10 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { NewSourceComponent } from './new-source/new-source.component';
 import { AddPhotoComponent } from "./add-photo/add-photo.component";
-import { RatingModule } from "ngx-rating";
+import {RatingModule} from "ngx-rating";
+import { OverallRatingPipe } from './pipe/overall-rating.pipe';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +38,9 @@ import { RatingModule } from "ngx-rating";
     LoginComponent,
     SignupComponent,
     NewSourceComponent,
-    AddPhotoComponent
+    AddPhotoComponent,
+    OverallRatingPipe,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +58,8 @@ import { RatingModule } from "ngx-rating";
     AddPhotoComponent,
     LoginComponent,
     SignupComponent,
-    NewSourceComponent
+    NewSourceComponent,
+    ConfirmationComponent
   ],
   providers: [AuthService, SearchService, TopicService],
   bootstrap: [AppComponent]

@@ -32,6 +32,8 @@ export class LoginComponent implements OnInit {
   login(): void {
     this.authService.login(this.formUser.username, this.formUser.password).then(() => {
       this.dialogRef.close()
+    }).catch((e) => {
+      document.getElementById("error").style.display = "inline"
     });
   }
 

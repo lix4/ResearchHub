@@ -2,13 +2,16 @@
 <br />
 <div fxLayout="column" fxLayoutAlign="center stretch">
   <md-input-container >
-    <input mdInput placeholder="Username" name="Username" [(ngModel)]="formUser.username">
+    <input mdInput required type="email" placeholder="Email" name="Email" [(ngModel)]="formUser.username">
+    <md-error>An Email is required</md-error>
   </md-input-container>
   <md-input-container >
-    <input mdInput placeholder="Password" name="password" type="password" [(ngModel)]="formUser.password">
+    <input mdInput required minlength="6" placeholder="Password" name="password" type="password" [(ngModel)]="formUser.password">
+    <md-error>password must be at least 6 characters</md-error>
   </md-input-container>
   <md-input-container >
-    <input mdInput placeholder="Confirm Password" name="confirmPassword" type="password" [(ngModel)]="confirmPassword">
+    <input mdInput required placeholder="Confirm Password" name="confirmPassword" type="password" [(ngModel)]="confirmPassword">
+    <md-hint *ngIf="!passwordMatch()">Passwords must match</md-hint>
   </md-input-container>
   <div>    
     <button md-button type="button" (click)="toLogin()">already have an account?</button>
