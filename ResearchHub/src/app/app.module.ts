@@ -1,3 +1,4 @@
+import { TopicService } from './service/topic.service';
 import { SearchService } from './service/search.service';
 import { AuthService } from './service/auth.service';
 import { RouterModule } from "@angular/router";
@@ -21,7 +22,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { NewSourceComponent } from './new-source/new-source.component';
 import { AddPhotoComponent } from "./add-photo/add-photo.component";
-import {RatingModule} from "ngx-rating";
+import { RatingModule } from "ngx-rating";
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import {RatingModule} from "ngx-rating";
     SignupComponent,
     NewSourceComponent
   ],
-  providers: [AuthService, SearchService],
+  providers: [AuthService, SearchService, TopicService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
