@@ -1,3 +1,4 @@
+import { TopicService } from './service/topic.service';
 import { SearchService } from './service/search.service';
 import { AuthService } from './service/auth.service';
 import { RouterModule } from "@angular/router";
@@ -24,6 +25,7 @@ import { AddPhotoComponent } from "./add-photo/add-photo.component";
 import {RatingModule} from "ngx-rating";
 import { OverallRatingPipe } from './pipe/overall-rating.pipe';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
+
 
 @NgModule({
   declarations: [
@@ -59,7 +61,7 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
     NewSourceComponent,
     ConfirmationComponent
   ],
-  providers: [AuthService, SearchService],
+  providers: [AuthService, SearchService, TopicService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

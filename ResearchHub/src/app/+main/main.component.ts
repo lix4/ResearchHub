@@ -1,3 +1,4 @@
+import { TopicService } from './../service/topic.service';
 import { SearchService } from './../service/search.service';
 import { MdDialogConfig, MdDialog } from '@angular/material';
 import { NewSourceComponent } from "../new-source/new-source.component";
@@ -18,7 +19,7 @@ export class MainComponent implements OnInit {
   public sources = []
   public searchContent: string;
 
-  constructor(private searchService: SearchService, public authService: AuthService, private af: AngularFire, private router: Router, private dialog: MdDialog) {
+  constructor(private topicService: TopicService, private searchService: SearchService, public authService: AuthService, private af: AngularFire, private router: Router, private dialog: MdDialog) {
 
   }
 
