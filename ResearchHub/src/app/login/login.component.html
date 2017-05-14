@@ -1,15 +1,18 @@
-<span class="title">Login</span>
+<span class="title">Login</span><span id="error">  Bad username/password</span>
 <br />
-<div fxLayout="column" fxLayoutAlign="center stretch">
+<form fxLayout="column" fxLayoutAlign="center stretch" (ngSubmit)="login()">
   <md-input-container >
-    <input mdInput placeholder="Username" name="Username" [(ngModel)]="formUser.username">
+    <input mdInput required placeholder="Username" name="Username" [(ngModel)]="formUser.username">
+    <md-error>A username is required</md-error>
   </md-input-container>
   <md-input-container >
-    <input mdInput placeholder="Password" name="password" type="password" [(ngModel)]="formUser.password">
+    <input mdInput required placeholder="Password" name="password" type="password" [(ngModel)]="formUser.password">
+    <md-error>A password is required</md-error>
   </md-input-container>
+  <br />
   <div>    
     <button md-button type="button" (click)="toSignup()">create an account</button>
     <span fxFlex></span>
-    <button md-button type="submit" class="login" (click)="login()">Login</button>
+    <button md-button type="submit" class="login">Login</button>
   </div>
-</div>
+</form>
