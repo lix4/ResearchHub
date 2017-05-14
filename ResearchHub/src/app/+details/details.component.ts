@@ -1,3 +1,4 @@
+import { MdDialog } from '@angular/material';
 import { SearchService } from './../service/search.service';
 import { Review } from './../models/review.model';
 import { Subscription } from 'rxjs/Subscription';
@@ -8,6 +9,7 @@ import { AngularFire, FirebaseListObservable } from "angularfire2";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { AuthService } from "../service/auth.service";
 import { User } from "../models/user.model";
+import { ConfirmationComponent } from "../confirmation/confirmation.component";
 
 @Component({
   selector: 'app-details',
@@ -34,7 +36,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   public searchResults;
   public overallRating
 
-  constructor(public searchService: SearchService, private router: Router, private af: AngularFire, private authService: AuthService, private route: ActivatedRoute) {
+  constructor(public searchService: SearchService, private router: Router, private af: AngularFire, private authService: AuthService, private route: ActivatedRoute, public dialog: MdDialog) {
     this.review = new Review()
     this.review.rating = 3
     this.routerSubscription = this.route.params.subscribe((params: Params) => {
@@ -122,7 +124,14 @@ export class DetailsComponent implements OnInit, OnDestroy {
   }
 
   deleteSource(): void {
-    console.log("TODO: Implement")
+    let dialogRef = this.dialog.open(ConfirmationComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        if (this.source.posted_by == this.authService._currentUserId) {
+          this.af.database.object("resources/" + this.sourceid).remove()
+        }
+      }
+    });
   }
 
   onSubmit(): void {
