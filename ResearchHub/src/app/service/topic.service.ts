@@ -2,12 +2,13 @@ import { element } from 'protractor';
 import { FirebaseListObservable } from 'angularfire2';
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class TopicService {
   public topicStream: FirebaseListObservable<string[]>;
   private myDB: any;
-  public subjectsMap: Map<string, Array<Object>>;
+  public _subjectsMap: Map<string, Array<Object>> = new Map<string, Array<Object>>()
 
   constructor() {
     firebase.database().ref().child("resources").on("value",
@@ -23,19 +24,19 @@ export class TopicService {
           return false;
         });
 
-        this.subjectsMap = new Map<string, Array<Object>>(subjects);
+        this._subjectsMap = new Map<string, Array<Object>>(subjects);
         subjects.forEach((subject) => {
 
           for (var key in subject.data.subjects) {
 
             var id = subject.id;
-            if (!this.subjectsMap.has(subject.data.subjects[key])) {
+            if (!this._subjectsMap.has(subject.data.subjects[key])) {
               firebase.database().ref().child("resources").child(id).on("value", (snapshot: firebase.database.DataSnapshot) => {
-                this.subjectsMap.set(subject.data.subjects[key], [snapshot.toJSON()]);
+                this._subjectsMap.set(subject.data.subjects[key], [snapshot.toJSON()]);
               });
             } else {
               firebase.database().ref().child("resources").child(id).on("value", (snapshot: firebase.database.DataSnapshot) => {
-                var temp = this.subjectsMap.get(subject.data.subjects[key]);
+                var temp = this._subjectsMap.get(subject.data.subjects[key]);
                 temp.push(snapshot.toJSON());
 
               });
@@ -46,6 +47,10 @@ export class TopicService {
         console.log();
 
       });
+  }
+
+  get subjectsMap(): Observable<Map<string, Array<Object>>> {
+    return Observable.of(this._subjectsMap)
   }
 
 
