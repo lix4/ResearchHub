@@ -6,7 +6,7 @@ import { AuthService } from "../service/auth.service";
 import { Subscription } from 'rxjs/Subscription';
 import { Resource } from './../models/resource.model';
 import { FirebaseListObservable, AngularFire } from 'angularfire2';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from "@angular/router";
 
 
@@ -15,18 +15,27 @@ import { Router } from "@angular/router";
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, OnDestroy {
   public subjects: any;
   public searchContent: string;
+  public topicSubscription: Subscription;
 
   constructor(private topicService: TopicService, private searchService: SearchService, public authService: AuthService, private af: AngularFire, private router: Router, private dialog: MdDialog) {
-    // this.subjects = this.topicService.subjectsMap;
-    // setTimeout('', 100000);
-    console.log(this.topicService.subjectsMap);
+    this.topicSubscription = this.topicService.subjectsMap.subscribe( (map) => {
+      if (map != undefined) {
+        this.subjects = map
+      } else {
+        this.subjects = []
+      }
+    });
+    console.log(this.topicService._subjectsMap);
   }
 
   ngOnInit() {
+  }
 
+  ngOnDestroy(): void {
+    this.topicSubscription.unsubscribe()
   }
 
   mainSearch(): void {
