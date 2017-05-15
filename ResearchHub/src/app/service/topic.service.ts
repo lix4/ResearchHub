@@ -7,35 +7,43 @@ import * as firebase from 'firebase';
 export class TopicService {
   public topicStream: FirebaseListObservable<string[]>;
   private myDB: any;
+  public subjectsMap: Map<string, Array<Object>>;
 
   constructor() {
     firebase.database().ref().child("resources").on("value",
       (snapshot: firebase.database.DataSnapshot) => {
         this.myDB = snapshot.toJSON();
-        console.log(this.myDB);
+
         let subjects = [];
         snapshot.forEach((snapshot) => {
-          console.log(snapshot.key);
+
           if (snapshot.hasChild("subjects")) {
             subjects.push({ id: snapshot.key, data: snapshot.toJSON() });
           }
           return false;
         });
-        console.log("subjects", subjects);
-        var topicsMap = new Map(subjects);
+
+        this.subjectsMap = new Map<string, Array<Object>>(subjects);
         subjects.forEach((subject) => {
-          console.log(subject.data.subjects);
+
           for (var key in subject.data.subjects) {
-            console.log(subject.data.subjects[key]);
-            if (!topicsMap.has(subject.data.subjects[key])) {
-              topicsMap.set(subject.data.subjects[key], {key});
+
+            var id = subject.id;
+            if (!this.subjectsMap.has(subject.data.subjects[key])) {
+              firebase.database().ref().child("resources").child(id).on("value", (snapshot: firebase.database.DataSnapshot) => {
+                this.subjectsMap.set(subject.data.subjects[key], [snapshot.toJSON()]);
+              });
             } else {
-              var temp = topicsMap.get(subject.data.subjects[key]);
-              temp.push(key);
+              firebase.database().ref().child("resources").child(id).on("value", (snapshot: firebase.database.DataSnapshot) => {
+                var temp = this.subjectsMap.get(subject.data.subjects[key]);
+                temp.push(snapshot.toJSON());
+
+              });
+              // console.log(temp);
             }
           }
         });
-
+        console.log();
 
       });
   }

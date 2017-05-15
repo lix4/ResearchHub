@@ -16,15 +16,15 @@
     </button>
   </h2>
   <md-grid-list cols="4" rowHeight="3:2">
-    <md-grid-tile *ngFor="let source of sources">
+    <md-grid-tile *ngFor="let subject of subjects">
       <md-card>
         <md-card-title fxLayoutAlign="none center">
-          <span>{{source.title}}</span>
+          <span>{{subject.title}}</span>
           <span fxFlex></span>
         </md-card-title>
         <md-card-content>
           <div fxLayoutAlign="none center">
-            <span>{{source.quantity}} Sources</span>
+            <span>{{subject.quantity}} Sources</span>
             <span fxFlex></span>
           </div>
         </md-card-content>

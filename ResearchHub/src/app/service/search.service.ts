@@ -40,7 +40,6 @@ export class SearchService {
             });
           }
         }
-        console.log("test", objArr);
         this.fuse = new Fuse(objArr, this.fuzeConfig);
       });
   }

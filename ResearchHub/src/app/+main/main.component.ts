@@ -16,11 +16,13 @@ import { Router } from "@angular/router";
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  public sources = []
+  public subjects: any;
   public searchContent: string;
 
   constructor(private topicService: TopicService, private searchService: SearchService, public authService: AuthService, private af: AngularFire, private router: Router, private dialog: MdDialog) {
-
+    // this.subjects = this.topicService.subjectsMap;
+    // setTimeout('', 100000);
+    console.log(this.topicService.subjectsMap);
   }
 
   ngOnInit() {
