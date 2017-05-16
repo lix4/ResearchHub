@@ -16,6 +16,7 @@ export class ResultsComponent implements OnInit {
 
   constructor(public searchService: SearchService, private router: Router) {
     this.searchContent = this.searchService.searchContent;
+    this.hasResults = this.searchResults.length == 0;
   }
 
   ngOnInit() {
@@ -24,7 +25,6 @@ export class ResultsComponent implements OnInit {
   resultSearch(): void {
     this.searchService.search(this.searchService.searchContent);
     this.searchResults = this.searchService.getSearchResult;
-    this.hasResults = this.searchResults.length == 0;
 
   }
 
