@@ -17,9 +17,9 @@
   </h2>
   <md-grid-list cols="4" rowHeight="3:2">
     <md-grid-tile *ngFor="let subject of subjects">
-      <md-card (click)="showResultsFor(subject)">
+      <md-card class="subject-card" (click)="showResultsFor(subject)">
         <md-card-title fxLayoutAlign="none center">
-          <span>{{subject.subject}}</span>
+          <span id="subject">{{subject.subject}}</span>
           <span fxFlex></span>
         </md-card-title>
         <md-card-content>

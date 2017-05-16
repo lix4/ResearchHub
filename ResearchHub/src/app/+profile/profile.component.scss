@@ -1,15 +1,20 @@
-img {
-    padding-top: 50px;
+div {
+  margin-top: 50px;
+  img {
+    // padding-top: 50px;
     display: block;
     margin: auto;
     width: auto;
-    max-height: 400px;
-}
-
-md-card {
+    cursor: pointer;
+    max-width: 404px;
+    max-height: 404px;
+    border: 2px solid skyblue;
+  }
+  md-card {
     width: 40%;
     margin: auto;
     md-card-content {
-        padding: 0px;
+      padding: 0px;
     }
+  }
 }
