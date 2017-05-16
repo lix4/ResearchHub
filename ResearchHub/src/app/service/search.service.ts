@@ -21,9 +21,8 @@ export class SearchService {
         this.searchContent = "";
         this.fuzeConfig = {
           shouldSort: true,
-          threshold: 0.6,
-          location: 0,
-          distance: 100,
+          threshold: 0.2,
+          location: 1,
           maxPatternLength: 32,
           minMatchCharLength: 1,
           keys: [

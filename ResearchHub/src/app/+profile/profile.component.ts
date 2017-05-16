@@ -25,7 +25,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
     authService.isSignedInStream.subscribe( (isSignedIn: boolean) => {
       if (isSignedIn) {
         this.userid = authService._currentUserId
-        console.log(this.userid);
         this.userEmail = authService._currentUserEmail
         var userStream = this.af.database.object("users/" + this.userid)
         this.userSubscription = userStream.subscribe( (user: User) => {

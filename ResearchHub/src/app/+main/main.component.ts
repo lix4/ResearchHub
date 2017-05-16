@@ -24,7 +24,6 @@ export class MainComponent implements OnInit, OnDestroy {
   constructor(private topicService: TopicService, private searchService: SearchService, public authService: AuthService, private af: AngularFire, private router: Router, private dialog: MdDialog) {
     this.topicSubscription = this.topicService.subjectsMap.subscribe( (subjects) => {
       this.subjects = subjects
-      console.log(subjects)
     });
   }
 
