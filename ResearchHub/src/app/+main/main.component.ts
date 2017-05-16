@@ -1,3 +1,4 @@
+import { Topic } from './../models/topic.model';
 import { TopicService } from './../service/topic.service';
 import { SearchService } from './../service/search.service';
 import { MdDialogConfig, MdDialog } from '@angular/material';
@@ -21,14 +22,10 @@ export class MainComponent implements OnInit, OnDestroy {
   public topicSubscription: Subscription;
 
   constructor(private topicService: TopicService, private searchService: SearchService, public authService: AuthService, private af: AngularFire, private router: Router, private dialog: MdDialog) {
-    this.topicSubscription = this.topicService.subjectsMap.subscribe( (map) => {
-      if (map != undefined) {
-        this.subjects = map
-      } else {
-        this.subjects = []
-      }
+    this.topicSubscription = this.topicService.subjectsMap.subscribe( (subjects) => {
+      this.subjects = subjects
+      console.log(subjects)
     });
-    console.log(this.topicService._subjectsMap);
   }
 
   ngOnInit() {
@@ -54,6 +51,12 @@ export class MainComponent implements OnInit, OnDestroy {
       dialogConfig.width = "1000px"
       this.dialog.open(NewSourceComponent, dialogConfig)
     }
+  }
+
+  showResultsFor(subject:Topic):void {
+    this.searchService.setSearchResult = subject.ids
+    this.searchService.searchContent = subject.subject
+    this.router.navigate(['/results'])
   }
 
 }

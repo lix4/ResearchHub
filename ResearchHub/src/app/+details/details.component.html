@@ -25,24 +25,26 @@
 <hr>
 <md-card>
   <md-card-title>Reviews</md-card-title>
-  <md-card *ngIf="showReviewSubmission || editingReview;else myReviewTemplate">
-    <form #mqForm="ngForm" (ngSubmit)="onSubmit()">
-      <md-input-container fxFlex>
-        <input mdInput name="review" [(ngModel)]="review.review">
-      </md-input-container>
-      <rating name="rating" [(ngModel)]="review.rating"></rating>
-    </form>
-  </md-card>
-  <ng-template #myReviewTemplate>
-      <md-card fxLayoutAlign="space-between center" *ngIf="authService._currentUserId">
-        <p>{{reviewCopy.review}}</p>
-        <div>
-          <rating [(ngModel)]="reviewCopy.rating" [readonly]="true"></rating>
-          <button md-icon-button (click)="editReview()"><md-icon>create</md-icon></button>
-          <button md-icon-button (click)="deleteReview()"><md-icon>delete</md-icon></button>
-        </div>
-      </md-card>
-  </ng-template>
+  <div *ngIf="userid">
+    <md-card *ngIf="showReviewSubmission || editingReview;else myReviewTemplate">
+      <form #mqForm="ngForm" (ngSubmit)="onSubmit()">
+        <md-input-container fxFlex>
+          <input mdInput name="review" [(ngModel)]="review.review">
+        </md-input-container>
+        <rating name="rating" [(ngModel)]="review.rating"></rating>
+      </form>
+    </md-card>
+    <ng-template #myReviewTemplate>
+        <md-card fxLayoutAlign="space-between center" *ngIf="authService._currentUserId">
+          <p>{{reviewCopy.review}}</p>
+          <div>
+            <rating [(ngModel)]="reviewCopy.rating" [readonly]="true"></rating>
+            <button md-icon-button (click)="editReview()"><md-icon>create</md-icon></button>
+            <button md-icon-button (click)="deleteReview()"><md-icon>delete</md-icon></button>
+          </div>
+        </md-card>
+    </ng-template>
+  </div>
   <div *ngFor="let message of reviewStream| async">
       <md-card fxLayoutAlign="space-between center" *ngIf="message.author != authService._currentUserId">
         <p>{{message.review}}</p>

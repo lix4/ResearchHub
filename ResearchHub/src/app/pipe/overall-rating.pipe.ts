@@ -8,10 +8,11 @@ export class OverallRatingPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
     if (Array.isArray(value)) {
+      console.log(value)
       value.forEach(element => {
-        var reviews = element.data.reviews
+        var reviews = element.reviews
         if (reviews == undefined) {
-          element.data.rating = 0
+          element.rating = 0
         } else {
           var count = 0
           var total = 0
@@ -19,9 +20,11 @@ export class OverallRatingPipe implements PipeTransform {
             total += reviews[key].rating
             count ++
           }
-          if (count == 0)
-            element.data.rating = 0
-          element.data.rating = total/count
+          if (count == 0) {
+            element.rating = 0
+          } else {
+            element.rating = total/count
+          }
         }
       });
       return value;

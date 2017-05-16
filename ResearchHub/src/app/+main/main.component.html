@@ -17,14 +17,14 @@
   </h2>
   <md-grid-list cols="4" rowHeight="3:2">
     <md-grid-tile *ngFor="let subject of subjects">
-      <md-card>
+      <md-card (click)="showResultsFor(subject)">
         <md-card-title fxLayoutAlign="none center">
-          <span>{{subject.title}}</span>
+          <span>{{subject.subject}}</span>
           <span fxFlex></span>
         </md-card-title>
         <md-card-content>
           <div fxLayoutAlign="none center">
-            <span>{{subject.quantity}} Sources</span>
+            <span>{{subject.ids.length}} Sources</span>
             <span fxFlex></span>
           </div>
         </md-card-content>

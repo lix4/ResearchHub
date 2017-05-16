@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import * as Fuse from 'fuse.js';
 import * as firebase from 'firebase';
+import { Resource } from "../models/resource.model";
 
 @Injectable()
 export class SearchService {
@@ -26,18 +27,17 @@ export class SearchService {
           maxPatternLength: 32,
           minMatchCharLength: 1,
           keys: [
-            "data.title",
-            "data.tags",
-            "data.subjects"
+            "title",
+            "tags",
+            "subjects"
           ]
         };
-        var objArr = [];
+        var objArr : Resource[] = [];
         for (var key in this.firebaseRef) {
           if (this.firebaseRef.hasOwnProperty(key)) {
-            objArr.push({
-              data: this.firebaseRef[key],
-              id: key
-            });
+            var temp: Resource = new Resource(this.firebaseRef[key])
+            temp.$key = key
+            objArr.push(temp);
           }
         }
         this.fuse = new Fuse(objArr, this.fuzeConfig);
@@ -45,7 +45,6 @@ export class SearchService {
   }
 
   search(item: string): void {
-    console.log("searh ", item);
     this.searchContent = item;
     this.searchResult = this.fuse.search(item);
     this.router.navigate(['/results']);
@@ -53,5 +52,9 @@ export class SearchService {
 
   get getSearchResult(): any {
     return this.searchResult;
+  }
+
+  set setSearchResult(results) {
+    this.searchResult = results;
   }
 }

@@ -8,11 +8,11 @@
 </md-card>
 <hr>
 <div fxLayout="column" fxLayoutAlign="space-between stretch">
-  <md-card *ngFor="let resource of searchResults | overallRating" (click)="goToDetail(resource.id)">
-    <md-card-title>{{resource.data.title}}</md-card-title>
+  <md-card *ngFor="let resource of searchResults | overallRating" (click)="goToDetail(resource.$key)">
+    <md-card-title>{{resource.title}}</md-card-title>
     <md-card-content>
-      <span>{{resource.data.author}}</span>
-      <rating [(ngModel)]="resource.data.rating" [readonly]="true"></rating>
+      <span>{{resource.author}}</span>
+      <rating [(ngModel)]="resource.rating" [readonly]="true"></rating>
     </md-card-content>
   </md-card>
 </div>
