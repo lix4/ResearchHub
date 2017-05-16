@@ -15,7 +15,7 @@
       <md-icon>add</md-icon> New Source
     </button>
   </h2>
-  <md-grid-list cols="4" rowHeight="3:2">
+  <md-grid-list [cols]="numberColumns" rowHeight="3:2">
     <md-grid-tile *ngFor="let subject of subjects">
       <md-card class="subject-card" (click)="showResultsFor(subject)">
         <md-card-title fxLayoutAlign="none center">

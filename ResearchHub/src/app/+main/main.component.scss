@@ -1,7 +1,7 @@
 $hortz-card-padding: 20px;
 md-card {
-  width: 90%;
-  height: 90%;
+  width: 95%;
+  height: 95%;
   padding: 0px;
   font-family: "monaco";
   md-card-title {
@@ -14,8 +14,10 @@ md-card {
     background-color: #F57C00;
   }
   md-card-content {
+    min-width: 100%;
+    min-height: 40%;
     padding: 10px $hortz-card-padding 0;
-    font-size: 16px;
+    font-size: 15px;
     color: black;
   }
 }
@@ -59,4 +61,6 @@ button {
   background-color: #ffffff;
   margin-top: 20px;
   padding: 0px 50px;
+  min-width: 500px;
+  min-height: 800px;
 }

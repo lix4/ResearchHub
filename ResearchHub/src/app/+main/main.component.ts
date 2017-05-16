@@ -22,7 +22,7 @@ export class MainComponent implements OnInit, OnDestroy {
   public topicSubscription: Subscription;
 
   constructor(private topicService: TopicService, private searchService: SearchService, public authService: AuthService, private af: AngularFire, private router: Router, private dialog: MdDialog) {
-    this.topicSubscription = this.topicService.subjectsMap.subscribe( (subjects) => {
+    this.topicSubscription = this.topicService.subjectsMap.subscribe((subjects) => {
       this.subjects = subjects
       console.log(subjects)
     });
@@ -40,7 +40,17 @@ export class MainComponent implements OnInit, OnDestroy {
     this.router.navigate(['/results'])
   }
 
-
+  get numberColumns(): number {
+    if (window.innerWidth < 500) {
+      return 1;
+    } else if (window.innerWidth < 800) {
+      return 2;
+    } else if (window.innerWidth < 1200) {
+      return 3;
+    } else {
+      return 4;
+    }
+  }
 
   newSource(): void {
     if (this.authService._isSignedIn) {
@@ -53,7 +63,7 @@ export class MainComponent implements OnInit, OnDestroy {
     }
   }
 
-  showResultsFor(subject:Topic):void {
+  showResultsFor(subject: Topic): void {
     this.searchService.setSearchResult = subject.ids
     this.searchService.searchContent = subject.subject
     this.router.navigate(['/results'])
