@@ -8,7 +8,6 @@ export class OverallRatingPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
     if (Array.isArray(value)) {
-      console.log(value)
       value.forEach(element => {
         var reviews = element.reviews
         if (reviews == undefined) {

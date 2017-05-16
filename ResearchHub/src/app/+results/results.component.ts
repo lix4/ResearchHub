@@ -23,11 +23,9 @@ export class ResultsComponent implements OnInit {
   resultSearch(): void {
     this.searchService.search(this.searchService.searchContent);
     this.searchResults = this.searchService.getSearchResult;
-    console.log("keep this search result: ", this.searchResults);
   }
 
   goToDetail(id: string): void {
-    console.log(`/details/${id}`);
     this.router.navigate([`/details/${id}`]);
   }
 

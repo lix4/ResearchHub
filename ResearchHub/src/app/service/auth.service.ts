@@ -11,13 +11,10 @@ export class AuthService {
   constructor(private afAuth: AngularFireAuth, private router: Router) {
     this.afAuth.subscribe((authState: FirebaseAuthState) => {
       if (authState) {
-        console.log("You are signed in. All is good!");
-        console.log(authState.auth.email);
         this._isSignedIn = true;
         this._currentUserEmail = authState.auth.email
         this._currentUserId = authState.uid;
       } else {
-        console.log("You are not signed in!");
         this._isSignedIn = false;
       }
     });
@@ -29,31 +26,24 @@ export class AuthService {
       password: password
     })
       .then((authState: FirebaseAuthState) => {
-        console.log("Sucessfully registered!!");
-        console.log(authState);
         this.router.navigate(['/']);
         return authState;
       })
       .catch((error) => {
-        console.log("fail!!!");
         throw error;
       });
   }
 
   login(email: string, password: string): firebase.Promise<FirebaseAuthState> {
-    console.log(email);
     return this.afAuth.login({
       email: email,
       password: password
     }, { provider: AuthProviders.Password, method: AuthMethods.Password })
       .then((authState: FirebaseAuthState) => {
-        console.log("Sucessfully logged in!!");
-        console.log(authState);
         this.router.navigate(['/main']);
         return authState;
       })
       .catch((error) => {
-        console.log("fail login!!!");
         throw error;
       });
   }

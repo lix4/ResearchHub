@@ -64,7 +64,6 @@ export class TopicService {
             this._subjects.push(subject)
           }
         })
-        console.log(this._subjects)
         this.subjects.next(this._subjects)
       });
   }
