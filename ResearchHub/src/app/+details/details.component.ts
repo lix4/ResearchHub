@@ -22,7 +22,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   private sourceid: string
   public source: Resource
   public date_posted: String
-  private userid: String
+  public userid: String
   private reviewSubscription: Subscription
   private userSubscription: Subscription
   private bookmarkSubscription: Subscription
