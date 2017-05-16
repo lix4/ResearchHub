@@ -37,7 +37,7 @@
     <ng-template #myReviewTemplate>
         <md-card fxLayoutAlign="space-between center" *ngIf="authService._currentUserId">
           <p>{{reviewCopy.review}}</p>
-          <div>
+          <div fxLayoutAlign="center end">
             <rating [(ngModel)]="reviewCopy.rating" [readonly]="true"></rating>
             <button md-icon-button (click)="editReview()"><md-icon>create</md-icon></button>
             <button md-icon-button (click)="deleteReview()"><md-icon>delete</md-icon></button>
