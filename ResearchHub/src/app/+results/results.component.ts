@@ -12,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class ResultsComponent implements OnInit {
   public searchContent: string;
   public searchResults = this.searchService.getSearchResult;
+  hasResults = true;
 
   constructor(public searchService: SearchService, private router: Router) {
     this.searchContent = this.searchService.searchContent;
@@ -23,6 +24,8 @@ export class ResultsComponent implements OnInit {
   resultSearch(): void {
     this.searchService.search(this.searchService.searchContent);
     this.searchResults = this.searchService.getSearchResult;
+    this.hasResults = this.searchResults.length == 0;
+
   }
 
   goToDetail(id: string): void {

@@ -8,6 +8,7 @@
 </md-card>
 <hr>
 <div fxLayout="column" fxLayoutAlign="space-between stretch">
+  <p *ngIf="hasResults">Sorry, we can't find resource you need.</p>
   <md-card class="result-card" *ngFor="let resource of searchResults | overallRating" (click)="goToDetail(resource.$key)">
     <md-card-title>{{resource.title}}</md-card-title>
     <md-card-content>
