@@ -32,8 +32,16 @@ export class NewSourceComponent implements OnInit {
       this.source.url = this.data.source.url
       this.$key = this.data.source.$key
       this.sourceDate = new Date(this.data.source.date_posted)
-      this.tags = this.data.source.tags.join(';')
-      this.subjects = this.data.source.subjects.join(';')
+      if (this.data.source.tags) {
+        this.tags = this.data.source.tags.join(';')
+      } else {
+        this.tags = ""
+      }
+      if (this.data.source.subjects) {
+        this.subjects = this.data.source.subjects.join(';')
+      } else {
+        this.subjects = ""
+      }
       this.action = "Save"
       this.title = "Edit"
     }
@@ -50,8 +58,6 @@ export class NewSourceComponent implements OnInit {
       this.source.tags = this.tags.split(";")
       this.source.subjects = this.subjects.split(";")
       if (this.$key) {
-        console.log("editing")
-        console.log(this.source.reviews)
         this.af.database.object("resources/" + this.$key).update(this.source).then( ()=> {
             this.dialogRef.close()
         });
