@@ -141,6 +141,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
         }
       }
     });
+    this.router.navigate([''])
   }
 
   onSubmit(): void {
